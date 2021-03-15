@@ -7,14 +7,16 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedinIcon from '@material-ui/icons/Linkedin';
 import EmailIcon from '@material-ui/icons/Email';
-import {Box, IconButton, Link} from "@material-ui/core";
+import {Box, IconButton, Link, Tooltip} from "@material-ui/core";
 import {red} from "@material-ui/core/colors";
 
 export default function () {
-    const SocialLinkButton = (props: React.PropsWithChildren<{ href: string; }>) => (
-        <a target="_blank" href={props.href} rel="noopener noreferrer">
-            <IconButton>{props.children}</IconButton>
-        </a>
+    const SocialLinkButton = (props: React.PropsWithChildren<{ href: string; tooltip: string }>) => (
+        <Tooltip title={props.tooltip}>
+            <a target="_blank" href={props.href} rel="noopener noreferrer">
+                <IconButton>{props.children}</IconButton>
+            </a>
+        </Tooltip>
     )
 
     return (
@@ -63,12 +65,12 @@ export default function () {
                 </div>
 
                 <div className="social">
-                    <SocialLinkButton href="https://github.com/vganin"><GitHubIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton href="https://instagram.com/vsevolod.ganin"><InstagramIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton href="https://twitter.com/vsevolod_ganin"><TwitterIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton href="https://facebook.com/vsevolod.ganin"><FacebookIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton href="https://linkedin.com/in/vganin/"><LinkedinIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton href="mailto:vsevolod.ganin@gmail.com"><EmailIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="GitHub" href="https://github.com/vganin"><GitHubIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="Instagram" href="https://instagram.com/vsevolod.ganin"><InstagramIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="Twitter" href="https://twitter.com/vsevolod_ganin"><TwitterIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="Facebook" href="https://facebook.com/vsevolod.ganin"><FacebookIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="Linkedin" href="https://linkedin.com/in/vganin/"><LinkedinIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="E-mail me!" href="mailto:vsevolod.ganin@gmail.com"><EmailIcon fontSize="large"/></SocialLinkButton>
                 </div>
 
                 <Typography variant="h6">
