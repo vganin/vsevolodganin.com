@@ -86,7 +86,7 @@ export default function () {
                     justifyContent="space-around"
                 >
                     <Box display="flex" flexDirection="row" alignItems="center" gridGap="16pt" flexWrap="no-wrap">
-                        <Typography variant="h4" align="center" style={{color: red[500], fontWeight: 600}}>
+                        <Typography variant="h4" align="center" style={{color: "#A53030", textShadow: "1px 1px 2pt #000000", fontWeight: 600}}>
                             Click Track
                         </Typography>
                         <img
