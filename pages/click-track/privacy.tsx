@@ -17,7 +17,7 @@ export default function () {
                     <title>Click Track Privacy Policy</title>
                 </Head>
                 <Typography variant="h2" color="secondary" style={{fontWeight: 600}}>
-                    Click Track
+                    CLICK TRACK
                 </Typography>
                 <Typography variant="h4" color="secondary" style={{fontWeight: 400}}>
                     Privacy Policy
