@@ -110,7 +110,7 @@ export default function () {
                     <br/><br/><Typography variant="h6">Contact Us</Typography><br/>
 
                     If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at <Link
-                    href="mailto:vsevolod.ganin@gmail.com">vsevolod.ganin@gmail.com</Link>.
+                    href="mailto:contact@vsevolodganin.com">contact@vsevolodganin.com</Link>.
                 </Typography>
             </Box>
         </Box>

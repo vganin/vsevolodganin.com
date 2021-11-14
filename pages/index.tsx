@@ -2,7 +2,6 @@ import React from "react";
 import Head from 'next/Head';
 import Typography from "@material-ui/core/Typography";
 import GitHubIcon from '@material-ui/icons/GitHub';
-import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedinIcon from '@material-ui/icons/Linkedin';
@@ -66,11 +65,10 @@ export default function () {
 
                 <div className="social">
                     <SocialLinkButton tooltip="GitHub" href="https://github.com/vganin"><GitHubIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton tooltip="Instagram" href="https://instagram.com/vsevolod.ganin"><InstagramIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Twitter" href="https://twitter.com/vsevolod_ganin"><TwitterIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Facebook" href="https://facebook.com/vsevolod.ganin"><FacebookIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Linkedin" href="https://linkedin.com/in/vganin/"><LinkedinIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton tooltip="E-mail me!" href="mailto:vsevolod.ganin@gmail.com"><EmailIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="E-mail me!" href="mailto:contact@vsevolodganin.com"><EmailIcon fontSize="large"/></SocialLinkButton>
                 </div>
 
                 <Typography variant="h6">
