@@ -1,10 +1,10 @@
 import React from "react";
-import Head from 'next/Head';
+import Head from 'next/head';
 import Typography from "@material-ui/core/Typography";
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedinIcon from '@material-ui/icons/Linkedin';
+import LinkedinIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
 import {Box, IconButton, Link, Tooltip} from "@material-ui/core";
 import {red} from "@material-ui/core/colors";

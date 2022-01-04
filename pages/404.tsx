@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/Head";
+import Head from "next/head";
 import Typography from "@material-ui/core/Typography";
 
 export default function () {

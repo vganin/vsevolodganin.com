@@ -10,11 +10,11 @@
     "export s3fs-mount": "next build && next export -o s3fs-mount/"
   },
   "dependencies": {
-    "@material-ui/core": "latest",
-    "@material-ui/icons": "latest",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "@material-ui/core": "4.11.3",
+    "@material-ui/icons": "4.11.2",
+    "next": "10.0.8",
+    "react": "16.8.0",
+    "react-dom": "16.8.0"
   },
   "devDependencies": {
     "@types/node": "14.14.34",

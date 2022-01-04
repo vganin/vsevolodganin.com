@@ -1,4 +1,4 @@
-import Head from 'next/Head';
+import Head from 'next/head';
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {ThemeProvider} from "@material-ui/core";
