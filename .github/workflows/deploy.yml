@@ -1,0 +1,22 @@
+name: Deploy
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm run "export out"
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YANDEX_CLOUD_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YANDEX_CLOUD_KEY }}
+          AWS_S3_BUCKET: ${{ secrets.YANDEX_CLOUD_BUCKET }}
+          AWS_REGION: 'ru-central1'
+          AWS_S3_ENDPOINT: 'https://storage.yandexcloud.net'
+          SOURCE_DIR: 'out'
