@@ -95,8 +95,7 @@ export default function () {
                             height="80pt"
                         />
                     </Box>
-
-                    <a href='https://play.google.com/store/apps/details?id=com.vsevolodganin.clicktrack'>
+                    <a href='https://play.google.com/store/apps/details?id=com.vsevolodganin.clicktrack&utm_source=vsevolodganin.com'>
                         <img
                             alt='Get it on Google Play'
                             src='/google-play.png'
