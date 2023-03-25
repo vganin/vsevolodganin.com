@@ -58,14 +58,14 @@ export default function () {
 
                 <div className="hi">
                     <Typography variant="h6">
-                        Hi, I'm Vsevolod, an Android developer currently working
+                        Hi, I'm Vsevolod, a Senior SWE currently working
                         at <Link style={{color: red[500]}} href="https://yandex.com/dev/" rel="noopener noreferrer">Yandex</Link>
                     </Typography>
                 </div>
 
                 <div className="social">
                     <SocialLinkButton tooltip="GitHub" href="https://github.com/vganin"><GitHubIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton tooltip="Twitter" href="https://twitter.com/vsevolod_ganin"><TwitterIcon fontSize="large"/></SocialLinkButton>
+                    <SocialLinkButton tooltip="Twitter" href="https://twitter.com/vsga_dev"><TwitterIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Facebook" href="https://facebook.com/vsevolod.ganin"><FacebookIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Linkedin" href="https://linkedin.com/in/vganin/"><LinkedinIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="E-mail me!" href="mailto:contact@vsevolodganin.com"><EmailIcon fontSize="large"/></SocialLinkButton>
