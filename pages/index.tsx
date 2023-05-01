@@ -7,7 +7,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedinIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
 import {Box, IconButton, Link, Tooltip} from "@material-ui/core";
-import {red} from "@material-ui/core/colors";
 
 export default function () {
     const SocialLinkButton = (props: React.PropsWithChildren<{ href: string; tooltip: string }>) => (
@@ -58,8 +57,8 @@ export default function () {
 
                 <div className="hi">
                     <Typography variant="h6">
-                        Hi, I'm Vsevolod, a Senior SWE currently working
-                        at <Link style={{color: red[500]}} href="https://yandex.com/dev/" rel="noopener noreferrer">Yandex</Link>
+                        Hi, I'm Vsevolod, a Senior Software Engineer currently working
+                        at <Link style={{color: '#024daf'}} href="https://www.skyscanner.net/" rel="noopener noreferrer">Skyscanner</Link>, previously <Link style={{color: '#fc3f1e'}} href="https://yandex.com/dev/" rel="noopener noreferrer">Yandex</Link>
                     </Typography>
                 </div>
 
