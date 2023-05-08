@@ -10,7 +10,25 @@ services:
       ND_ENABLESHARING: true
     volumes:
       - navidrome-data:/data
-      - ~/music:/music
+      - /mnt/music:/music:rshared
+
+  music-s3:
+    image: efrecon/s3fs:1.91
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse:/dev/fuse
+    security_opt:
+      - apparmor:unconfined
+    environment:
+      AWS_S3_BUCKET: music.vsevolodganin.com
+      AWS_S3_ACCESS_KEY_ID: AKIAZZDZW6BZOJVJ6O3U
+      AWS_S3_SECRET_ACCESS_KEY: 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
+      AWS_S3_URL: https://s3.eu-west-2.amazonaws.com
+      S3FS_ARGS: endpoint=eu-west-2,use_path_request_style,nonempty
+      S3FS_DEBUG: 0
+    volumes:
+      - /mnt/music:/opt/s3fs/bucket:rshared
 
   nginx:
     image: jonasal/nginx-certbot:4.2.0-nginx1.23.4-alpine
