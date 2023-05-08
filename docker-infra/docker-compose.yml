@@ -1,0 +1,27 @@
+services:
+
+  website:
+    build: ../website-src
+
+  navidrome:
+    image: deluan/navidrome:0.49.3
+    environment:
+      ND_SCANSCHEDULE: 0
+      ND_ENABLESHARING: true
+    volumes:
+      - navidrome-data:/data
+      - ~/music:/music
+
+  nginx:
+    image: jonasal/nginx-certbot:4.2.0-nginx1.23.4-alpine
+    restart: unless-stopped
+    environment:
+      CERTBOT_EMAIL: vsevolod.ganin@gmail.com
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx.conf/:/etc/nginx/user_conf.d/default.conf:ro
+
+volumes:
+  navidrome-data:
