@@ -57,8 +57,7 @@ export default function () {
 
                 <div className="hi">
                     <Typography variant="h6">
-                        Hi, I'm Vsevolod, a Senior Software Engineer currently working
-                        at <Link style={{color: '#024daf'}} href="https://www.skyscanner.net/" rel="noopener noreferrer">Skyscanner</Link>, previously <Link style={{color: '#fc3f1e'}} href="https://yandex.com/dev/" rel="noopener noreferrer">Yandex</Link>
+                        Personal website of Vsevolod Ganin
                     </Typography>
                 </div>
 
