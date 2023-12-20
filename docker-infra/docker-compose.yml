@@ -4,7 +4,7 @@ services:
     build: ../website-src
 
   navidrome:
-    image: deluan/navidrome:0.49.3
+    image: deluan/navidrome:0.50.2
     environment:
       ND_SCANSCHEDULE: 0
       ND_ENABLESHARING: true
