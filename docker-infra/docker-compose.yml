@@ -15,7 +15,7 @@ services:
       - /var/lib/vsevolodganin.com/navidrome/music:/music:rshared
 
   music-s3:
-    image: alexpkg/goofys:latest
+    build: ../geesefs
     cap_add:
       - SYS_ADMIN
     devices:
