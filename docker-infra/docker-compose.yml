@@ -26,7 +26,7 @@ services:
       S3_BUCKET: music.vsevolodganin.com
       S3_URL: https://s3.eu-west-2.amazonaws.com
       MNT_POINT: /data
-      OPTION: --region eu-west-2
+      OPTION: --region eu-west-2 --cheap
       AWS_ACCESS_KEY_ID: AKIAZZDZW6BZOJVJ6O3U
       AWS_SECRET_ACCESS_KEY: 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
     volumes:
