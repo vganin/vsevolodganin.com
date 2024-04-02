@@ -5,6 +5,8 @@ services:
 
   navidrome:
     image: deluan/navidrome:0.51.0
+    depends_on:
+      - music-s3
     environment:
       ND_SCANSCHEDULE: 0
       ND_ENABLESHARING: true
@@ -34,6 +36,9 @@ services:
 
   nginx:
     image: jonasal/nginx-certbot:4.2.0-nginx1.23.4-alpine
+    depends_on:
+      - website
+      - navidrome
     restart: unless-stopped
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com
