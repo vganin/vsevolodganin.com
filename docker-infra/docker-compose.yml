@@ -4,7 +4,7 @@ services:
     build: ../website-src
 
   navidrome:
-    image: deluan/navidrome:0.52.0
+    image: deluan/navidrome:0.52.5
     depends_on:
       - music-s3
     environment:
