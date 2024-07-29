@@ -2,11 +2,13 @@ services:
 
   website:
     build: ../website-src
+    restart: unless-stopped
 
   navidrome:
     image: deluan/navidrome:0.52.5
     depends_on:
       - music-s3
+    restart: unless-stopped
     environment:
       ND_SCANSCHEDULE: 0
       ND_ENABLESHARING: true
@@ -26,6 +28,7 @@ services:
       - /dev/fuse:/dev/fuse
     security_opt:
       - apparmor:unconfined
+    restart: unless-stopped
     environment:
       S3_BUCKET: music.vsevolodganin.com
       S3_URL: https://s3.eu-west-2.amazonaws.com
