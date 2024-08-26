@@ -20,8 +20,8 @@ services:
 
   music-s3:
     # Comment one to switch between goofys and geesefs
-    # image: alexpkg/goofys:latest
-    build: ../geesefs
+    image: alexpkg/goofys:latest
+    # build: ../geesefs
     cap_add:
       - SYS_ADMIN
     devices:
