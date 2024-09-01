@@ -12,6 +12,8 @@ services:
     environment:
       ND_SCANSCHEDULE: 0
       ND_ENABLESHARING: true
+      ND_SCANNER_EXTRACTOR: ffmpeg
+      ND_SCANNER_GENRESEPARATORS: ";"
       ND_LASTFM_APIKEY: a5d4a2441de7d6e7c7eb41b74203e47f
       ND_LASTFM_SECRET: 0f4f9ad6ca671c33e1dd737a9ab54ed4
     volumes:
