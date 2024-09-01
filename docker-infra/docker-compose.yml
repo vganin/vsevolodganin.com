@@ -14,8 +14,11 @@ services:
       ND_ENABLESHARING: true
       ND_SCANNER_EXTRACTOR: ffmpeg
       ND_SCANNER_GENRESEPARATORS: ";"
-      ND_LASTFM_APIKEY: a5d4a2441de7d6e7c7eb41b74203e47f
-      ND_LASTFM_SECRET: 0f4f9ad6ca671c33e1dd737a9ab54ed4
+#      ND_LASTFM_APIKEY: a5d4a2441de7d6e7c7eb41b74203e47f
+#      ND_LASTFM_SECRET: 0f4f9ad6ca671c33e1dd737a9ab54ed4
+    env_file:
+      # ND_LASTFM_APIKEY and ND_LASTFM_SECRET are expected
+      - /var/lib/vsevolodganin.com/navidrome/secrets.env
     volumes:
       - /var/lib/vsevolodganin.com/navidrome/data:/data
       - /var/lib/vsevolodganin.com/navidrome/music:/music:rshared
@@ -36,8 +39,11 @@ services:
       S3_URL: https://s3.eu-west-2.amazonaws.com
       MNT_POINT: /data
       OPTION: --region eu-west-2 --cheap
-      AWS_ACCESS_KEY_ID: AKIAZZDZW6BZOJVJ6O3U
-      AWS_SECRET_ACCESS_KEY: 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
+#      AWS_ACCESS_KEY_ID: AKIAZZDZW6BZOJVJ6O3U
+#      AWS_SECRET_ACCESS_KEY: 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
+    env_file:
+      # AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are expected
+      - /var/lib/vsevolodganin.com/navidrome/secrets.env
     volumes:
       - /var/lib/vsevolodganin.com/navidrome/music:/data:rshared
 
