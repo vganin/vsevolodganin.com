@@ -2,8 +2,6 @@ services:
 
   navidrome:
     image: deluan/navidrome:0.52.5
-    depends_on:
-      - music-s3
     restart: unless-stopped
     environment:
       ND_SCANSCHEDULE: 0
@@ -20,7 +18,6 @@ services:
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
     depends_on:
-      - website
       - navidrome
     restart: unless-stopped
     environment:
