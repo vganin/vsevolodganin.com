@@ -1,7 +1,7 @@
 services:
 
   website:
-    build: ../website-src
+    build: ../../website-src
     restart: unless-stopped
 
   nginx:
