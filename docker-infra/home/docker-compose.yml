@@ -1,5 +1,15 @@
 services:
 
+  ddns:
+    image: oznu/cloudflare-ddns
+    restart: always
+    environment:
+      API_KEY_FILE: /run/secrets/ddns-api-key
+      ZONE: vsevolodganin.com
+      SUBDOMAIN: home
+    secrets:
+      - ddns-api-key
+
   navidrome:
     image: deluan/navidrome:0.52.5
     restart: unless-stopped
@@ -28,3 +38,7 @@ services:
     volumes:
       - ./nginx.conf/:/etc/nginx/user_conf.d/default.conf:ro
       - /var/lib/vsevolodganin.com/letsencrypt:/etc/letsencrypt
+
+secrets:
+  ddns-api-key:
+    file: /var/lib/vsevolodganin.com/ddns/api-key
