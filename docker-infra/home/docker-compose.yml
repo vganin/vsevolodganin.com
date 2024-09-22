@@ -1,0 +1,33 @@
+services:
+
+  navidrome:
+    image: deluan/navidrome:0.52.5
+    depends_on:
+      - music-s3
+    restart: unless-stopped
+    environment:
+      ND_SCANSCHEDULE: 0
+      ND_ENABLESHARING: true
+      ND_SCANNER_EXTRACTOR: ffmpeg
+      ND_SCANNER_GENRESEPARATORS: ";"
+    env_file:
+      # ND_LASTFM_APIKEY and ND_LASTFM_SECRET are expected
+      - /var/lib/vsevolodganin.com/navidrome/secrets.env
+    volumes:
+      - /var/lib/vsevolodganin.com/navidrome/data:/data
+      - /var/lib/vsevolodganin.com/navidrome/music:/music:rshared
+
+  nginx:
+    image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
+    depends_on:
+      - website
+      - navidrome
+    restart: unless-stopped
+    environment:
+      CERTBOT_EMAIL: vsevolod.ganin@gmail.com
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx.conf/:/etc/nginx/user_conf.d/default.conf:ro
+      - /var/lib/vsevolodganin.com/letsencrypt:/etc/letsencrypt

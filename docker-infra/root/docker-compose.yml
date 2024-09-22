@@ -1,0 +1,20 @@
+services:
+
+  website:
+    build: ../website-src
+    restart: unless-stopped
+
+  nginx:
+    image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
+    depends_on:
+      - website
+      - navidrome
+    restart: unless-stopped
+    environment:
+      CERTBOT_EMAIL: vsevolod.ganin@gmail.com
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx.conf/:/etc/nginx/user_conf.d/default.conf:ro
+      - /var/lib/vsevolodganin.com/letsencrypt:/etc/letsencrypt
