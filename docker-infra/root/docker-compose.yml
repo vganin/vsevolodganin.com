@@ -8,7 +8,6 @@ services:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
     depends_on:
       - website
-      - navidrome
     restart: unless-stopped
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com
