@@ -12,6 +12,7 @@ services:
 
   filebrowser:
     image: filebrowser/filebrowser:v2.31.1
+    restart: unless-stopped
     volumes:
       - /media/hell:/srv
       - ./filebrowser.json:/.filebrowser.json
