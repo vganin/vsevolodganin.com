@@ -10,6 +10,15 @@ services:
     secrets:
       - ddns-api-key
 
+  filebrowser:
+    image: filebrowser/filebrowser:v2.31.1
+    volumes:
+      - /media/hell:/srv
+      - ./filebrowser.json:/.filebrowser.json
+    environment:
+      - PUID=$(id -u)
+      - PGID=$(id -g)
+
   navidrome:
     image: deluan/navidrome:0.53.2
     restart: unless-stopped
@@ -28,6 +37,7 @@ services:
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
     depends_on:
+      - filebrowser
       - navidrome
     restart: unless-stopped
     environment:
@@ -36,7 +46,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx.conf/:/etc/nginx/user_conf.d/default.conf:ro
+      - ./nginx.conf:/etc/nginx/user_conf.d/default.conf:ro
       - /var/lib/vsevolodganin.com/letsencrypt:/etc/letsencrypt
 
 secrets:

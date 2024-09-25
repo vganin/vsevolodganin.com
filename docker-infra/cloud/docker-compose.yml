@@ -15,5 +15,5 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx.conf/:/etc/nginx/user_conf.d/default.conf:ro
+      - ./nginx.conf:/etc/nginx/user_conf.d/default.conf:ro
       - /var/lib/vsevolodganin.com/letsencrypt:/etc/letsencrypt
