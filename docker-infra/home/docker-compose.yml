@@ -34,7 +34,7 @@ services:
       - /var/lib/vsevolodganin.com/navidrome/secrets.env
     volumes:
       - /var/lib/vsevolodganin.com/navidrome/data:/data
-      - /var/lib/vsevolodganin.com/navidrome/music:/music:ro
+      - /media/hell/musick:/music:ro
 
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
