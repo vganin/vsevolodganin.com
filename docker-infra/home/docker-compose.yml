@@ -36,11 +36,46 @@ services:
       - /var/lib/vsevolodganin.com/navidrome/data:/data
       - /media/hell/musick:/music:ro
 
+  plex:
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    ports:
+      - 32400:32400/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+    volumes:
+      - /var/lib/vsevolodganin.com/plex/config:/config
+      - /var/lib/vsevolodganin.com/plex/transcode:/transcode
+      - /media/hell/movies:/movies:ro
+      - /media/hell/tvshows:/tvshows:ro
+
+  qbittorrent:
+    image: qbittorrentofficial/qbittorrent-nox
+    restart: unless-stopped
+    environment:
+      - QBT_LEGAL_NOTICE=confirm
+    read_only: true
+    stop_grace_period: 30m
+    tmpfs:
+      - /tmp
+    volumes:
+      - /var/lib/vsevolodganin.com/qbittorrent/:/config
+      - /media/hell/downloads:/downloads
+      - /media/hell/movies:/movies
+      - /media/hell/tvshows:/tvshows
+
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
     depends_on:
       - filebrowser
       - navidrome
+      - plex
+      - qbittorrent
     restart: unless-stopped
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com
