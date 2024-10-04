@@ -27,9 +27,8 @@ services:
       ND_ENABLESHARING: true
       ND_SCANNER_EXTRACTOR: ffmpeg
       ND_SCANNER_GENRESEPARATORS: ";"
-    env_file:
-      # ND_LASTFM_APIKEY and ND_LASTFM_SECRET are expected
-      - /var/lib/vsevolodganin.com/navidrome/secrets.env
+      ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY:?error}
+      ND_LASTFM_SECRET: ${ND_LASTFM_SECRET:?error}
     volumes:
       - /var/lib/vsevolodganin.com/navidrome/data:/data
       - /media/hell/musick:/music:ro
