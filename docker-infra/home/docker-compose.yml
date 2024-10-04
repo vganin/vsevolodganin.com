@@ -15,9 +15,9 @@ services:
     image: filebrowser/filebrowser
     restart: unless-stopped
     volumes:
-      - /media/hell:/srv
+      - ${HDD_PATH:?error}:/srv
       - ./filebrowser.json:/.filebrowser.json
-      - /var/lib/vsevolodganin.com/filebrowser/database.db:/database.db
+      - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database.db
 
   navidrome:
     image: deluan/navidrome
@@ -30,8 +30,8 @@ services:
       ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY:?error}
       ND_LASTFM_SECRET: ${ND_LASTFM_SECRET:?error}
     volumes:
-      - /var/lib/vsevolodganin.com/navidrome/data:/data
-      - /media/hell/musick:/music:ro
+      - ${APP_DATA_PATH:?error}/navidrome/data:/data
+      - ${HDD_PATH:?error}/musick:/music:ro
 
   plex:
     image: plexinc/pms-docker
@@ -46,10 +46,10 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
     volumes:
-      - /var/lib/vsevolodganin.com/plex/config:/config
-      - /var/lib/vsevolodganin.com/plex/transcode:/transcode
-      - /media/hell/movies:/movies:ro
-      - /media/hell/tvshows:/tvshows:ro
+      - ${APP_DATA_PATH:?error}/plex/config:/config
+      - ${APP_DATA_PATH:?error}/plex/transcode:/transcode
+      - ${HDD_PATH:?error}/movies:/movies:ro
+      - ${HDD_PATH:?error}/tvshows:/tvshows:ro
 
   qbittorrent:
     image: qbittorrentofficial/qbittorrent-nox
@@ -61,10 +61,10 @@ services:
     tmpfs:
       - /tmp
     volumes:
-      - /var/lib/vsevolodganin.com/qbittorrent/:/config
-      - /media/hell/downloads:/downloads
-      - /media/hell/movies:/movies
-      - /media/hell/tvshows:/tvshows
+      - ${APP_DATA_PATH:?error}/qbittorrent/:/config
+      - ${HDD_PATH:?error}/downloads:/downloads
+      - ${HDD_PATH:?error}/movies:/movies
+      - ${HDD_PATH:?error}/tvshows:/tvshows
 
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
@@ -81,8 +81,8 @@ services:
       - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/user_conf.d/default.conf:ro
-      - /var/lib/vsevolodganin.com/letsencrypt:/etc/letsencrypt
+      - ${APP_DATA_PATH:?error}/letsencrypt:/etc/letsencrypt
 
 secrets:
   ddns-api-key:
-    file: /var/lib/vsevolodganin.com/ddns/api-key
+    file: ${APP_DATA_PATH:?error}/ddns/api-key
