@@ -1,0 +1,59 @@
+# This is a directory inside Docker container
+directory: /music
+
+plugins: web inline discogs fetchart lastgenre edit zero scrub duplicates rewrite
+
+format_item: $albumartist - ($year) $album%aunique{} - %if{$multidisc,$disc.}$track. $title
+format_album: ($year) $album%aunique{} - %if{$multidisc,$disc.}$track. $title
+original_date: yes
+artist_credit: no
+per_disc_numbering: yes
+
+aunique:
+    keys: albumartist year album
+    disambiguators: albumtype label catalognum albumdisambig releasegroupdisambig
+    bracket: '[]'
+
+clutter: .pdf .bmp .png .jpg .jpeg .tif .gif .sfv .nfo .m3u .log .DS_Store Thumbs.DB Thumbs.db
+
+import:
+    move: yes
+    copy: no
+    write: yes
+    incremental: yes
+    incremental_skip_later: yes
+    from_scratch: yes
+    duplicate_keys:
+        album: albumartist album year
+        item: artist title disc track
+    duplicate_action: remove
+    bell: yes
+
+paths:
+    default: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
+    singleton: No Album/$artist/$title
+    comp: Various Artists/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
+
+item_fields:
+    multidisc: 1 if disctotal > 1 else 0
+
+musicbrainz:
+    enabled: yes
+
+discogs:
+    append_style_genre: yes
+    separator: ";"
+
+fetchart:
+    cautious: true
+
+lastgenre:
+    separator: ";"
+
+zero:
+    fields: images
+    update_database: true
+
+rewrite:
+    artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
+    artist Dragsjukan: Draugsjukan

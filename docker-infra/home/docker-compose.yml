@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
     volumes:
       - ${HDD_PATH:?error}:/srv
-      - ./filebrowser.json:/.filebrowser.json
+      - ./filebrowser.json:/.filebrowser.json:ro
       - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database.db
 
   navidrome:
@@ -65,6 +65,18 @@ services:
       - ${HDD_PATH:?error}/downloads:/downloads
       - ${HDD_PATH:?error}/movies:/movies
       - ${HDD_PATH:?error}/tvshows:/tvshows
+
+  beets:
+    image: lscr.io/linuxserver/beets
+    restart: unless-stopped
+    environment:
+      PUID: 1000
+      PGUID: 1000
+    volumes:
+      - ${APP_DATA_PATH:?error}/beets:/config
+      - ./beets.yaml:/config/config.yaml:ro
+      - ${HDD_PATH:?error}/musick:/music
+      - ${HDD_PATH:?error}/downloads/musick:/downloads
 
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
