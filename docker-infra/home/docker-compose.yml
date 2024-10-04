@@ -18,9 +18,6 @@ services:
       - /media/hell:/srv
       - ./filebrowser.json:/.filebrowser.json
       - /var/lib/vsevolodganin.com/filebrowser/database.db:/database.db
-    environment:
-      - PUID=$(id -u)
-      - PGID=$(id -g)
 
   navidrome:
     image: deluan/navidrome
