@@ -76,7 +76,18 @@ services:
       - ${APP_DATA_PATH:?error}/beets:/config
       - ./beets.yaml:/config/config.yaml:ro
       - ${HDD_PATH:?error}/musick:/music
-      - ${HDD_PATH:?error}/downloads/musick:/downloads
+      - ${HDD_PATH:?error}/downloads/beets:/downloads
+
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    restart: unless-stopped
+    environment:
+      PUID: 1000
+      PGUID: 1000
+    volumes:
+      - ${APP_DATA_PATH:?error}/lidarr:/config
+      - ${HDD_PATH:?error}/musick:/music
+      - ${HDD_PATH:?error}/downloads/lidarr:/downloads
 
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
@@ -85,6 +96,7 @@ services:
       - navidrome
       - plex
       - qbittorrent
+      - lidarr
     restart: unless-stopped
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com
