@@ -22,5 +22,5 @@ cd docker-infra/home
 # or
 cd docker-infra/cloud
 
-sudo docker compose up -d
+docker compose up -d
 ```
