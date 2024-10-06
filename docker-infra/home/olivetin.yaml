@@ -1,0 +1,13 @@
+actions:
+  - title: "Import music with Beets"
+    shell: docker exec beets sh -c "beet import "{{ From }}""
+    popupOnStart: execution-dialog
+    icon: <iconify-icon icon="game-icons:beet"></iconify-icon>
+    maxConcurrent: 1
+    arguments:
+      - name: From
+        choices:
+          - title: Downloads
+            value: /downloads
+          - title: Existing library
+            value: /music
