@@ -4,6 +4,7 @@ actions:
     popupOnStart: execution-dialog
     icon: <iconify-icon icon="game-icons:beet"></iconify-icon>
     maxConcurrent: 1
+    timeout: 999999
     arguments:
       - name: From
         choices:
