@@ -90,6 +90,16 @@ services:
       - ${HDD_PATH:?error}/musick:/music
       - ${HDD_PATH:?error}/downloads/music/lidarr:/downloads
 
+  bandcampsync:
+    image: ghcr.io/meeb/bandcampsync
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_PATH:?error}/bandcampsync:/config
+      - ${HDD_PATH:?error}/downloads/music/bandcampsync:/downloads
+
   olivetin:
     image: jamesread/olivetin
     restart: unless-stopped
