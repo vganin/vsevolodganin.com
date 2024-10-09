@@ -79,6 +79,15 @@ services:
       - ${HDD_PATH:?error}/musick:/music
       - ${HDD_PATH:?error}/downloads/music:/downloads
 
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_PATH:?error}/prowlarr:/config
+
   lidarr:
     image: lscr.io/linuxserver/lidarr
     restart: unless-stopped
