@@ -56,10 +56,14 @@ services:
     restart: unless-stopped
     environment:
       - QBT_LEGAL_NOTICE=confirm
+      - TORRENTING_PORT=13627
     read_only: true
     stop_grace_period: 30m
     tmpfs:
       - /tmp
+    ports:
+      - 13627:13627/tcp
+      - 13627:13627/udp
     volumes:
       - ${APP_DATA_PATH:?error}/qbittorrent/:/config
       - ${HDD_PATH:?error}/downloads:/downloads
