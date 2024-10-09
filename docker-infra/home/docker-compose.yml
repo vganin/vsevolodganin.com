@@ -100,7 +100,7 @@ services:
       PGUID: 1000
     volumes:
       - ${APP_DATA_PATH:?error}/lidarr:/config
-      - ${HDD_PATH:?error}/musick:/music
+      - ${HDD_PATH:?error}/musick:/music:ro
       - ${HDD_PATH:?error}/downloads/music/lidarr:/downloads
 
   bandcampsync:
@@ -112,6 +112,18 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/bandcampsync:/config
       - ${HDD_PATH:?error}/downloads/music/bandcampsync:/downloads
+
+  slskd:
+    image: slskd/slskd
+    restart: unless-stopped
+    ports:
+      - 50300:50300
+    environment:
+      - SLSKD_REMOTE_CONFIGURATION=true
+    volumes:
+      - ${APP_DATA_PATH:?error}/slskd:/app
+      - ${HDD_PATH:?error}/musick:/music:ro
+      - ${HDD_PATH:?error}/downloads/music/slskd:/downloads
 
   olivetin:
     image: jamesread/olivetin
@@ -130,6 +142,7 @@ services:
       - plex
       - qbittorrent
       - lidarr
+      - slskd
       - olivetin
     restart: unless-stopped
     environment:
