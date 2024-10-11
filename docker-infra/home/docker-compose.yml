@@ -123,7 +123,7 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/slskd:/app
       - ${HDD_PATH:?error}/musick:/music:ro
-      - ${HDD_PATH:?error}/downloads/music/slskd:/downloads
+      - ${HDD_PATH:?error}/downloads/music/slskd:/app/downloads
 
   olivetin:
     image: jamesread/olivetin
