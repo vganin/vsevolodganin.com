@@ -44,7 +44,9 @@ fetchart:
     cautious: true
 
 lastgenre:
+    count: 3
     separator: ";"
+    prefer_specific: yes
 
 zero:
     fields: images
