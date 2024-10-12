@@ -1,7 +1,7 @@
 # This is a directory inside Docker container
 directory: /music
 
-plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite
+plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite unimported info
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
