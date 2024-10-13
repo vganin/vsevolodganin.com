@@ -56,7 +56,6 @@ services:
     restart: unless-stopped
     environment:
       - QBT_LEGAL_NOTICE=confirm
-      - TORRENTING_PORT=13627
     read_only: true
     stop_grace_period: 30m
     tmpfs:
