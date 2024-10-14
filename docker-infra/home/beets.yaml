@@ -42,6 +42,7 @@ musicbrainz:
 
 fetchart:
     cautious: true
+    store_source: yes
 
 lastgenre:
     count: 3
