@@ -17,8 +17,8 @@ aunique:
 clutter: .pdf .bmp .png .jpg .jpeg .tif .gif .sfv .nfo .m3u .log .DS_Store Thumbs.DB Thumbs.db
 
 import:
-    move: yes
-    copy: no
+    move: no
+    copy: yes
     write: yes
     incremental: yes
     incremental_skip_later: yes
