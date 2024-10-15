@@ -81,6 +81,8 @@ services:
       - ./beets.yaml:/config/config.yaml:ro
       - ${HDD_PATH:?error}/musick:/music
       - ${HDD_PATH:?error}/downloads/music:/downloads
+    secrets:
+      - beets-secret-config
 
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -155,4 +157,6 @@ services:
 
 secrets:
   ddns-api-key:
-    file: ${APP_DATA_PATH:?error}/ddns/api-key
+    file: ./secrets/ddns/api-key
+  beets-secret-config:
+    file: ./secrets/beets/secret-config.yaml

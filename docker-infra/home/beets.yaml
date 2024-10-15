@@ -1,6 +1,8 @@
 # This is a directory inside Docker container
 directory: /music
 
+include: [/run/secrets/beets-secret-config]
+
 plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite unimported info
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
@@ -43,6 +45,16 @@ musicbrainz:
 fetchart:
     cautious: true
     store_source: yes
+    high_resolution: yes
+    maxwidth: 2048
+    sources:
+        - filesystem
+        - fanarttv
+        - itunes
+        - amazon
+        # Disabled due to DOS
+        # - coverart
+        - albumart
 
 lastgenre:
     count: 3
