@@ -48,6 +48,7 @@ fetchart:
     high_resolution: yes
     maxwidth: 2048
     sources:
+        - cover_art_url
         - filesystem
         - fanarttv
         - itunes
