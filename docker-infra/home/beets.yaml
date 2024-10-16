@@ -11,11 +11,6 @@ original_date: yes
 artist_credit: no
 per_disc_numbering: yes
 
-aunique:
-    keys: albumartist year album
-    disambiguators: albumtype label catalognum albumdisambig releasegroupdisambig
-    bracket: '[]'
-
 clutter: .pdf .bmp .png .jpg .jpeg .tif .gif .sfv .nfo .m3u .log .DS_Store Thumbs.DB Thumbs.db
 
 import:
@@ -24,10 +19,6 @@ import:
     write: yes
     incremental: yes
     incremental_skip_later: yes
-    from_scratch: yes
-    duplicate_keys:
-        album: albumartist album year
-        item: artist album year disc track title
     duplicate_action: remove
     bell: yes
 
