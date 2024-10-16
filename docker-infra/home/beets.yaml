@@ -27,7 +27,7 @@ import:
     from_scratch: yes
     duplicate_keys:
         album: albumartist album year
-        item: artist title disc track
+        item: artist album year disc track title
     duplicate_action: remove
     bell: yes
 
