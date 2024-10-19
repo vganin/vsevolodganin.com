@@ -54,7 +54,7 @@ lastgenre:
     prefer_specific: yes
 
 zero:
-    fields: images
+    fields: images comments
     update_database: true
 
 rewrite:
