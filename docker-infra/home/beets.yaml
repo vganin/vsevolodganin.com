@@ -19,7 +19,6 @@ import:
     write: yes
     incremental: yes
     incremental_skip_later: yes
-    duplicate_action: remove
     bell: yes
 
 paths:
