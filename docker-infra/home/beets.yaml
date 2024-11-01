@@ -48,6 +48,7 @@ fetchart:
         - amazon
         - coverart
         - albumart
+        - lastfm
 
 lastgenre:
     count: 3

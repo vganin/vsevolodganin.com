@@ -19,7 +19,8 @@
   - `beets/secret-config.yaml`
     ```
     fetchart:
-        fanarttv_key: <..>
+        fanarttv_key: <...>
+        lastfm_key: <...>
     ```
 
 
