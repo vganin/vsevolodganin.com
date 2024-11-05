@@ -69,6 +69,7 @@ services:
       - ${HDD_PATH:?error}/downloads:/downloads
       - ${HDD_PATH:?error}/movies:/movies
       - ${HDD_PATH:?error}/tvshows:/tvshows
+      - ${HDD_PATH:?error}/books:/books
 
   beets:
     image: lscr.io/linuxserver/beets
