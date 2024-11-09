@@ -1,7 +1,7 @@
 services:
 
   ddns:
-    image: oznu/cloudflare-ddns
+    image: oznu/cloudflare-ddns:latest
     restart: always
     environment:
       API_KEY_FILE: /run/secrets/ddns-api-key
@@ -12,7 +12,7 @@ services:
       - ddns-api-key
 
   filebrowser:
-    image: filebrowser/filebrowser
+    image: filebrowser/filebrowser:latest
     restart: unless-stopped
     volumes:
       - ${HDD_PATH:?error}:/srv
@@ -20,7 +20,7 @@ services:
       - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database.db
 
   navidrome:
-    image: deluan/navidrome
+    image: deluan/navidrome:latest
     restart: unless-stopped
     environment:
       ND_SCANSCHEDULE: 0
@@ -35,17 +35,17 @@ services:
       - ${HDD_PATH:?error}/musick:/music:ro
 
   plex:
-    image: plexinc/pms-docker
+    image: plexinc/pms-docker:latest
     restart: unless-stopped
     ports:
-      - 32400:32400/tcp
-      - 8324:8324/tcp
-      - 32469:32469/tcp
-      - 1900:1900/udp
-      - 32410:32410/udp
-      - 32412:32412/udp
-      - 32413:32413/udp
-      - 32414:32414/udp
+      - "32400:32400/tcp"
+      - "8324:8324/tcp"
+      - "32469:32469/tcp"
+      - "1900:1900/udp"
+      - "32410:32410/udp"
+      - "32412:32412/udp"
+      - "32413:32413/udp"
+      - "32414:32414/udp"
     volumes:
       - ${APP_DATA_PATH:?error}/plex/config:/config
       - ${APP_DATA_PATH:?error}/plex/transcode:/transcode
@@ -53,7 +53,7 @@ services:
       - ${HDD_PATH:?error}/tvshows:/tvshows:ro
 
   qbittorrent:
-    image: qbittorrentofficial/qbittorrent-nox
+    image: qbittorrentofficial/qbittorrent-nox:latest
     restart: unless-stopped
     environment:
       - QBT_LEGAL_NOTICE=confirm
@@ -62,8 +62,8 @@ services:
     tmpfs:
       - /tmp
     ports:
-      - 13627:13627/tcp
-      - 13627:13627/udp
+      - "13627:13627/tcp"
+      - "13627:13627/udp"
     volumes:
       - ${APP_DATA_PATH:?error}/qbittorrent/:/config
       - ${HDD_PATH:?error}/downloads:/downloads
@@ -72,7 +72,7 @@ services:
       - ${HDD_PATH:?error}/books:/books
 
   beets:
-    image: lscr.io/linuxserver/beets
+    image: lscr.io/linuxserver/beets:latest
     container_name: beets # Need explicit name to be reliably accessible from olivetin
     restart: unless-stopped
     environment:
@@ -96,7 +96,7 @@ services:
       - ${APP_DATA_PATH:?error}/prowlarr:/config
 
   lidarr:
-    image: lscr.io/linuxserver/lidarr
+    image: lscr.io/linuxserver/lidarr:latest
     restart: unless-stopped
     environment:
       PUID: 1000
@@ -107,7 +107,7 @@ services:
       - ${HDD_PATH:?error}/downloads/music/lidarr:/downloads
 
   bandcampsync:
-    image: ghcr.io/meeb/bandcampsync
+    image: ghcr.io/meeb/bandcampsync:latest
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -117,10 +117,8 @@ services:
       - ${HDD_PATH:?error}/downloads/music/bandcampsync:/downloads
 
   slskd:
-    image: slskd/slskd
+    image: slskd/slskd:latest
     restart: unless-stopped
-    ports:
-      - 50300:50300
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
     volumes:
@@ -129,7 +127,7 @@ services:
       - ${HDD_PATH:?error}/downloads/music/slskd:/app/downloads
 
   olivetin:
-    image: jamesread/olivetin
+    image: jamesread/olivetin:latest
     restart: unless-stopped
     user: root
     volumes:
@@ -138,7 +136,7 @@ services:
       - ./olivetin.yaml:/config/config.yaml:ro
 
   pyload:
-    image: lscr.io/linuxserver/pyload-ng
+    image: lscr.io/linuxserver/pyload-ng:latest
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -146,8 +144,6 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/pyload:/config
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
-    ports:
-      - 8000:8000
 
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
@@ -164,8 +160,8 @@ services:
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/user_conf.d/default.conf:ro
       - ${APP_DATA_PATH:?error}/letsencrypt:/etc/letsencrypt
