@@ -3,7 +3,7 @@ directory: /music
 
 include: [/run/secrets/beets-secret-config]
 
-plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite unimported info mbsync
+plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite unimported info mbsync subsonicupdate
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
@@ -66,3 +66,6 @@ rewrite:
     artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
     artist Dragsjukan: Draugsjukan
     artist Paysage d’Hiver: Paysage d'Hiver
+
+subsonic:
+    url: https://music.vsevolodganin.com
