@@ -137,6 +137,18 @@ services:
       - ${APP_DATA_PATH:?error}/olivetin:/config
       - ./olivetin.yaml:/config/config.yaml:ro
 
+  pyload:
+    image: lscr.io/linuxserver/pyload-ng
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_PATH:?error}/pyload:/config
+      - ${HDD_PATH:?error}/downloads/pyload:/downloads
+    ports:
+      - 8000:8000
+
   nginx:
     image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
     depends_on:
@@ -147,6 +159,7 @@ services:
       - lidarr
       - slskd
       - olivetin
+      - pyload
     restart: unless-stopped
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com
