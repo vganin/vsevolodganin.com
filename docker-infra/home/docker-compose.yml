@@ -66,7 +66,7 @@ services:
       - "13627:13627/udp"
     volumes:
       - ${APP_DATA_PATH:?error}/qbittorrent/:/config
-      - ${HDD_PATH:?error}/downloads:/downloads
+      - ${HDD_PATH:?error}/downloads/qbittorrent:/downloads
       - ${HDD_PATH:?error}/movies:/movies
       - ${HDD_PATH:?error}/tvshows:/tvshows
       - ${HDD_PATH:?error}/books:/books
@@ -82,7 +82,7 @@ services:
       - ${APP_DATA_PATH:?error}/beets:/config
       - ./beets.yaml:/config/config.yaml:ro
       - ${HDD_PATH:?error}/musick:/music
-      - ${HDD_PATH:?error}/downloads/music:/downloads
+      - ${HDD_PATH:?error}/downloads:/downloads
     secrets:
       - beets-secret-config
 
@@ -104,7 +104,7 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/lidarr:/config
       - ${HDD_PATH:?error}/musick:/music:ro
-      - ${HDD_PATH:?error}/downloads/music/lidarr:/downloads
+      - ${HDD_PATH:?error}/downloads/lidarr:/downloads
 
   bandcampsync:
     image: ghcr.io/meeb/bandcampsync:latest
@@ -114,7 +114,7 @@ services:
       - PGID=1000
     volumes:
       - ${APP_DATA_PATH:?error}/bandcampsync:/config
-      - ${HDD_PATH:?error}/downloads/music/bandcampsync:/downloads
+      - ${HDD_PATH:?error}/downloads/bandcampsync:/downloads
 
   slskd:
     image: slskd/slskd:latest
@@ -124,7 +124,7 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/slskd:/app
       - ${HDD_PATH:?error}/musick:/music:ro
-      - ${HDD_PATH:?error}/downloads/music/slskd:/app/downloads
+      - ${HDD_PATH:?error}/downloads/slskd:/app/downloads
 
   olivetin:
     image: jamesread/olivetin:latest
