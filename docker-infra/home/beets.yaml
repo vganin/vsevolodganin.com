@@ -66,6 +66,7 @@ rewrite:
     artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
     artist Dragsjukan: Draugsjukan
     artist Paysage d’Hiver: Paysage d'Hiver
+    title \[untitled\]: Untitled
 
 subsonic:
     url: https://music.vsevolodganin.com
