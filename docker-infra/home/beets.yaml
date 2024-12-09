@@ -3,7 +3,7 @@ directory: /music
 
 include: [/run/secrets/beets-secret-config]
 
-plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite unimported info mbsync subsonicupdate
+plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite unimported info mbsync subsonicupdate badfiles
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
