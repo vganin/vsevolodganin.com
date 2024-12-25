@@ -146,7 +146,7 @@ services:
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
 
   nginx:
-    image: jonasal/nginx-certbot:5.0.1-nginx1.25.4-alpine
+    image: jonasal/nginx-certbot:5.4.0-alpine
     depends_on:
       - filebrowser
       - navidrome
