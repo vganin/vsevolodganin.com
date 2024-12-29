@@ -1,17 +1,16 @@
 actions:
   - title: "Import music with Beets"
-    shell: docker exec beets sh -c "beet import -q {{ options }} '{{ from }}'"
+    shell: docker exec beets sh -c "beet import -q /downloads"
     popupOnStart: execution-dialog
     icon: <iconify-icon icon="game-icons:beet"></iconify-icon>
     maxConcurrent: 1
     timeout: 999999
-    arguments:
-      - name: from
-        title: From
-        type: very_dangerous_raw_string
-        suggestions:
-          /downloads: Downloads
-          /music: Existing library
-      - name: options
-        title: Additional Beets options
-        type: ascii_identifier
+
+  - title: "Start Soularr"
+    shell: docker start home-soularr-1 -a
+    popupOnStart: execution-dialog
+    timeout: 999999
+
+  - title: "Stop Soularr"
+    shell: docker stop home-soularr-1
+    timeout: 30
