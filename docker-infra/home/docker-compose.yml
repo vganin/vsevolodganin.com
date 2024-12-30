@@ -152,7 +152,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - SCRIPT_INTERVAL=300
+      - SCRIPT_INTERVAL=0
     volumes:
       - ./secrets/soularr:/data
       - ${HDD_PATH:?error}/downloads/slskd:/downloads
