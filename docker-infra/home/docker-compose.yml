@@ -49,8 +49,8 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/plex/config:/config
       - ${APP_DATA_PATH:?error}/plex/transcode:/transcode
-      - ${HDD_PATH:?error}/movies:/movies:ro
-      - ${HDD_PATH:?error}/tvshows:/tvshows:ro
+      - ${HDD_PATH:?error}/movies:/movies
+      - ${HDD_PATH:?error}/tvshows:/tvshows
 
   qbittorrent:
     image: qbittorrentofficial/qbittorrent-nox:latest
