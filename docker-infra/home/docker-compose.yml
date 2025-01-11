@@ -105,7 +105,6 @@ services:
       - ${APP_DATA_PATH:?error}/lidarr:/config
       - ${HDD_PATH:?error}/musick:/music:ro
       - ${HDD_PATH:?error}/downloads/lidarr:/downloads
-      - ${HDD_PATH:?error}/downloads/slskd:/slskd
 
   bandcampsync:
     image: ghcr.io/meeb/bandcampsync:latest
@@ -155,7 +154,6 @@ services:
       - SCRIPT_INTERVAL=0
     volumes:
       - ./secrets/soularr:/data
-      - ${HDD_PATH:?error}/downloads/slskd:/downloads
 
   nginx:
     image: jonasal/nginx-certbot:5.4.0-alpine
