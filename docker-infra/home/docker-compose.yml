@@ -151,7 +151,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - SCRIPT_INTERVAL=0
+      - SCRIPT_INTERVAL=300
     volumes:
       - ./secrets/soularr:/data
 
