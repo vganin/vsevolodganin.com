@@ -60,7 +60,7 @@ zero:
     update_database: true
 
 duplicates:
-    keys: disc track albumartist year album
+    keys: disc track albumartist year album mb_releasegroupid
 
 rewrite:
     artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
