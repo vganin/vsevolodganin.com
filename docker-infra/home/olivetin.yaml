@@ -5,12 +5,3 @@ actions:
     icon: <iconify-icon icon="game-icons:beet"></iconify-icon>
     maxConcurrent: 1
     timeout: 999999
-
-  - title: "Start Soularr"
-    shell: docker start home-soularr-1 -a
-    popupOnStart: execution-dialog
-    timeout: 999999
-
-  - title: "Stop Soularr"
-    shell: docker stop home-soularr-1
-    timeout: 30

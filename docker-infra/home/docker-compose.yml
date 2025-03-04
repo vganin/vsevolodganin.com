@@ -96,7 +96,7 @@ services:
       - ${APP_DATA_PATH:?error}/prowlarr:/config
 
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest
+    image: ghcr.io/linuxserver-labs/prarr:lidarr-plugins
     restart: unless-stopped
     environment:
       PUID: 1000
@@ -134,16 +134,6 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/pyload:/config
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
-
-  soularr:
-    image: mrusse08/soularr:latest
-    restart: unless-stopped
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - SCRIPT_INTERVAL=300
-    volumes:
-      - ./secrets/soularr:/data
 
   nginx:
     image: jonasal/nginx-certbot:5.4.0-alpine
