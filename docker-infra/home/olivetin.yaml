@@ -3,6 +3,7 @@ actions:
     shell: |
       docker exec beets sh -c "
       beet import -q /downloads
+      beet dup -ad
       "
     popupOnStart: execution-dialog
     icon: <iconify-icon icon="game-icons:beet"></iconify-icon>
