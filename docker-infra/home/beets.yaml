@@ -65,10 +65,8 @@ duplicates:
 rewrite:
     artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
     artist Dragsjukan: Draugsjukan
-    artist Paysage d’Hiver: Paysage d'Hiver
-    artist Nav': Навь
-    artist Αχέροντας: Acherontas
     title \[untitled\]: Untitled
+    album \[untitled\]: Untitled
 
 subsonic:
     url: https://music.vsevolodganin.com
