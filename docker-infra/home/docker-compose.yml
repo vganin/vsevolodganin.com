@@ -23,7 +23,7 @@ services:
     image: deluan/navidrome:latest
     restart: unless-stopped
     environment:
-      ND_SCANSCHEDULE: 0
+      ND_SCANNER_ENABLED: false
       ND_ENABLESHARING: true
       ND_SCANNER_EXTRACTOR: ffmpeg
       ND_SCANNER_GENRESEPARATORS: ";"
