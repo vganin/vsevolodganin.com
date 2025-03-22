@@ -19,9 +19,7 @@ import:
     write: yes
     incremental: yes
     incremental_skip_later: yes
-    duplicate_keys:
-        album: mb_releasegroupid albumartist year album
-        item: mb_trackid disc track
+    duplicate_action: ask
     bell: yes
 
 paths:
@@ -60,7 +58,12 @@ zero:
     update_database: true
 
 duplicates:
-    keys: disc track albumartist year album mb_releasegroupid
+    action: ask
+    full: yes
+    count: yes
+    tiebreak:
+        bitrate: max
+        format: flac
 
 rewrite:
     artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
