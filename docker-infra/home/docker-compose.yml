@@ -73,7 +73,7 @@ services:
       - ${HDD_PATH:?error}/books:/books
 
   beets:
-    image: lscr.io/linuxserver/beets:latest
+    build: ../../docker-beets
     container_name: beets # Need explicit name to be reliably accessible from olivetin
     restart: unless-stopped
     environment:

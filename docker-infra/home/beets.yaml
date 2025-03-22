@@ -3,7 +3,22 @@ directory: /music
 
 include: [/run/secrets/beets-secret-config]
 
-plugins: web inline fetchart lastgenre edit zero scrub duplicates rewrite unimported info mbsync subsonicupdate badfiles
+plugins: 
+    - web
+    - inline
+    - fetchart
+    - lastgenre
+    - edit
+    - zero
+    - scrub
+    - duplicates
+    - rewrite
+    - unimported
+    - info
+    - mbsync
+    - subsonicupdate
+    - badfiles
+    - importreplace
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
@@ -68,8 +83,17 @@ duplicates:
 rewrite:
     artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
     artist Dragsjukan: Draugsjukan
-    title \[untitled\]: Untitled
-    album \[untitled\]: Untitled
 
 subsonic:
     url: https://music.vsevolodganin.com
+
+importreplace:
+  replacements:
+    - item_fields: title artist artist_sort artist_credit
+      album_fields: album artist artist_sort artist_credit
+      replace:
+        '[\u2018-\u201B]': ''''
+        '[\u201C-\u201F]': '"'
+        '[\u2010-\u2015]': '-'
+        '…': '...'
+        '\[untitled\]': Untitled
