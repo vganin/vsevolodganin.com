@@ -30,6 +30,7 @@ services:
       ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY:?error}
       ND_LASTFM_SECRET: ${ND_LASTFM_SECRET:?error}
       ND_COVERARTPRIORITY: cover.*, folder.*, front.*, embedded
+      ND_ENABLEFAVOURITES: false
     volumes:
       - ${APP_DATA_PATH:?error}/navidrome/data:/data
       - ${HDD_PATH:?error}/musick:/music:ro
