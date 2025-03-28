@@ -83,6 +83,7 @@ duplicates:
 rewrite:
     artist Wędrowcy Tułacze Zbiegi: wędrowcy~tułacze~zbiegi
     artist Dragsjukan: Draugsjukan
+    artist Αχέροντας: Acherontas
 
 subsonic:
     url: https://music.vsevolodganin.com
