@@ -23,7 +23,7 @@ plugins:
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
 original_date: yes
-artist_credit: no
+artist_credit: yes
 per_disc_numbering: yes
 
 clutter: .pdf .bmp .png .jpg .jpeg .tif .gif .sfv .nfo .m3u .log .DS_Store Thumbs.DB Thumbs.db
