@@ -79,15 +79,6 @@ services:
     secrets:
       - beets-secret-config
 
-  prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest
-    restart: unless-stopped
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - ${APP_DATA_PATH:?error}/prowlarr:/config
-
   lidarr:
     image: ghcr.io/linuxserver-labs/prarr:lidarr-plugins
     restart: unless-stopped
