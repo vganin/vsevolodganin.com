@@ -107,3 +107,6 @@ importreplace:
         '[\u2010-\u2015]': '-'
         '…': '...'
         '\[untitled\]': Untitled
+
+badfiles:
+    check_on_import: yes
