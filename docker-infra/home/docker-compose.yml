@@ -1,5 +1,25 @@
 services:
 
+  beszel:
+    image: henrygd/beszel:latest
+    restart: always
+    ports:
+      - 8090:8090
+    volumes:
+      - ${APP_DATA_PATH:?error}/beszel/data:/beszel_data
+      - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
+
+  beszel-agent:
+    image: henrygd/beszel-agent:latest
+    restart: always
+    network_mode: host
+    volumes:
+      - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      LISTEN: /beszel_socket/beszel.sock
+      KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPN9rJdkhPwg9zIO8ES2shSn2Xs2GhrIBoUudWtUQklg'
+
   ddns:
     image: oznu/cloudflare-ddns:latest
     restart: always
