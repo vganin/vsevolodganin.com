@@ -15,6 +15,7 @@ services:
     network_mode: host
     volumes:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
+      - ${HDD_PATH:?error}:/extra-filesystems/sda2:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       LISTEN: /beszel_socket/beszel.sock
