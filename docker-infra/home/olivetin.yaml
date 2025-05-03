@@ -1,3 +1,22 @@
+authRequireGuestsToLogin: true
+
+accessControlLists:
+  - name: "admins"
+    permissions:
+      view: true
+      exec: true
+      logs: true
+    matchUsergroups:
+      - "admins"
+    addToEveryAction: true
+
+authLocalUsers:
+  enabled: true
+  users:
+    - username: vsga
+      usergroup: admins
+      password: $argon2id$v=19$m=65536,t=4,p=8$KE9Hpr4q+E47LiqC1HxOcw$kGfvCTkWnb3uADi6VIpldfY6mY3Lm7aDhtLxPwnU8yA
+
 actions:
   - title: "Import music with Beets"
     shell: |
