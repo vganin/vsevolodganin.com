@@ -1,7 +1,7 @@
 services:
 
   beszel:
-    image: henrygd/beszel:latest
+    image: henrygd/beszel:0.11.1
     restart: always
     ports:
       - 8090:8090
@@ -10,7 +10,7 @@ services:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
 
   beszel-agent:
-    image: henrygd/beszel-agent:latest
+    image: henrygd/beszel-agent:0.11.1
     restart: always
     network_mode: host
     volumes:
@@ -22,7 +22,7 @@ services:
       KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPN9rJdkhPwg9zIO8ES2shSn2Xs2GhrIBoUudWtUQklg'
 
   ddns:
-    image: oznu/cloudflare-ddns:latest
+    image: oznu/cloudflare-ddns@sha256:19bd73d8aea9641dc329ec18ae693b2b9c33ff7cdc007f368266ce584446f995
     restart: always
     environment:
       API_KEY_FILE: /run/secrets/ddns-api-key
@@ -33,7 +33,7 @@ services:
       - ddns-api-key
 
   filebrowser:
-    image: filebrowser/filebrowser:latest
+    image: filebrowser/filebrowser:v2.32.0
     restart: unless-stopped
     volumes:
       - ${HDD_PATH:?error}:/srv
@@ -41,7 +41,7 @@ services:
       - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database.db
 
   navidrome:
-    image: deluan/navidrome:latest
+    image: deluan/navidrome:0.55.2
     restart: unless-stopped
     environment:
       ND_SCANNER_ENABLED: false
@@ -57,7 +57,7 @@ services:
       - ${HDD_PATH:?error}/musick:/music:ro
 
   plex:
-    image: plexinc/pms-docker:latest
+    image: plexinc/pms-docker:1.41.6.9685-d301f511a
     restart: unless-stopped
     volumes:
       - ${APP_DATA_PATH:?error}/plex/config:/config
@@ -67,7 +67,7 @@ services:
     network_mode: host
   
   qbittorrent:
-    image: qbittorrentofficial/qbittorrent-nox:latest
+    image: qbittorrentofficial/qbittorrent-nox:5.0.5-1
     restart: unless-stopped
     environment:
       - QBT_LEGAL_NOTICE=confirm
@@ -101,7 +101,7 @@ services:
       - beets-secret-config
 
   lidarr:
-    image: ghcr.io/linuxserver-labs/prarr:lidarr-plugins
+    image: ghcr.io/linuxserver-labs/prarr@sha256:34221e1325a694f46528f19e2aaabb25a46da6730ea41b1a6352e09a4d1223e2
     restart: unless-stopped
     environment:
       PUID: 1000
@@ -112,7 +112,7 @@ services:
       - ${HDD_PATH:?error}/downloads/lidarr:/downloads
 
   slskd:
-    image: slskd/slskd:latest
+    image: slskd/slskd:0.22.5
     restart: unless-stopped
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
@@ -122,7 +122,7 @@ services:
       - ${HDD_PATH:?error}/downloads/slskd:/app/downloads
 
   olivetin:
-    image: jamesread/olivetin:latest
+    image: jamesread/olivetin:2025.4.22
     restart: unless-stopped
     user: root
     volumes:
@@ -131,7 +131,7 @@ services:
       - ./olivetin.yaml:/config/config.yaml:ro
 
   pyload:
-    image: lscr.io/linuxserver/pyload-ng:latest
+    image: lscr.io/linuxserver/pyload-ng@sha256:0d41d7f53b77696abaf5420b9b9fc51a2bde6459aaa041414f3e1b96ffeead7d
     restart: unless-stopped
     environment:
       - PUID=1000
