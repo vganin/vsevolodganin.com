@@ -2,7 +2,7 @@ services:
 
   beszel:
     image: henrygd/beszel:0.11.1
-    restart: always
+    restart: unless-stopped
     ports:
       - 8090:8090
     volumes:
@@ -11,7 +11,7 @@ services:
 
   beszel-agent:
     image: henrygd/beszel-agent:0.11.1
-    restart: always
+    restart: unless-stopped
     network_mode: host
     volumes:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
@@ -23,7 +23,7 @@ services:
 
   ddns:
     image: oznu/cloudflare-ddns@sha256:19bd73d8aea9641dc329ec18ae693b2b9c33ff7cdc007f368266ce584446f995
-    restart: always
+    restart: unless-stopped
     environment:
       API_KEY_FILE: /run/secrets/ddns-api-key
       ZONE: vsevolodganin.com
