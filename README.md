@@ -21,6 +21,11 @@
     fetchart:
         fanarttv_key: <...>
         lastfm_key: <...>
+    
+    subsonic:
+        user: <...>
+        pass: <...>
+        auth: <...>
     ```
 
 
