@@ -1,21 +1,25 @@
 # Prerequisites
 
+## Install dependencies
+
 - Docker Engine + Compose
 
-### docker-infra/home
+## Create files
 
-- Create `docker-infra/home/.env` file with the following values:
+### For home environment
+
+- `docker-infra/home/.env`
   ```
   HDD_PATH=<...>
   APP_DATA_PATH=<...>
   ND_LASTFM_APIKEY=<...>
   ND_LASTFM_SECRET=<...>
   ```
-  - `HDD_PATH`: local path to store slow-access data like movies, music, etc., e.g. `/media/hdd`
-  - `APP_DATA_PATH`: local path to store fast-access data like databases, caches, etc., e.g. `/var/lib/vsevolodganin.com`
-  - `ND_LASTFM_APIKEY`, `ND_LASTFM_SECRET`: Last.fm API secrets for Navidrome, follow [the official guide](https://www.navidrome.org/docs/usage/external-integrations/#lastfm) to acquire
-- Create `docker-infra/home/secrets` folder with the following secrets:
-  - `ddns/api-key` contains CloudFlare API key
+- `docker-infra/home/secrets/`
+  - `ddns/api-key` 
+    ```
+    <...>
+    ```
   - `beets/secret-config.yaml`
     ```
     fetchart:
@@ -29,7 +33,7 @@
     ```
 
 
-# How to run
+# Run
 
 ```sh
 cd docker-infra/home
