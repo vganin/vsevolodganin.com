@@ -141,7 +141,7 @@ services:
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
 
   dococd:
-    image: ghcr.io/kimdre/doco-cd:0.17.0
+    image: ghcr.io/kimdre/doco-cd:0.19.1
     restart: unless-stopped
     environment:
       GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
