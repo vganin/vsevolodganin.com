@@ -140,6 +140,15 @@ services:
       - ${APP_DATA_PATH:?error}/pyload:/config
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
 
+  dococd:
+    image: ghcr.io/kimdre/doco-cd:0.17.0
+    restart: unless-stopped
+    environment:
+      GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   nginx:
     image: jonasal/nginx-certbot:5.5.0-nginx1.27.5-alpine
     depends_on:
@@ -151,6 +160,7 @@ services:
       - slskd
       - olivetin
       - pyload
+      - dococd
     restart: unless-stopped
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com

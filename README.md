@@ -14,6 +14,8 @@
   APP_DATA_PATH=<...>
   ND_LASTFM_APIKEY=<...>
   ND_LASTFM_SECRET=<...>
+  GIT_ACCESS_TOKEN=<...>
+  WEBHOOK_SECRET=<...>
   ```
 - `docker-infra/home/secrets/`
   - `ddns/api-key` 
