@@ -41,7 +41,7 @@ services:
       - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database.db
 
   navidrome:
-    image: deluan/navidrome:0.55.2
+    image: deluan/navidrome:0.56.0
     restart: unless-stopped
     environment:
       ND_SCANNER_ENABLED: false
