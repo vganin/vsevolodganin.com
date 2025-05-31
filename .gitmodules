@@ -1,3 +1,0 @@
-[submodule "docker-beets"]
-	path = docker-beets
-	url = https://github.com/vganin/docker-beets
