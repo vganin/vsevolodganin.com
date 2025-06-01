@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  home:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH and deploy
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.HOME_SSH_ENDPOINT }}
+          port: ${{ secrets.HOME_SSH_PORT }}
+          username: ${{ secrets.HOME_SSH_USER }}
+          key: ${{ secrets.HOME_SSH_KEY }}
+          script: |
+            set -e
+            cd /home/vsga/vsevolodganin.com/docker-infra/home
+            git pull origin main
+            docker compose pull
+            docker compose up -d --build --remove-orphans
