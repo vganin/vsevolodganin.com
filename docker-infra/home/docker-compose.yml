@@ -28,7 +28,7 @@ services:
       API_KEY_FILE: /run/secrets/ddns-api-key
       ZONE: vsevolodganin.com
       SUBDOMAIN: home
-      PROXIED: true
+      PROXIED: false
     secrets:
       - ddns-api-key
 
