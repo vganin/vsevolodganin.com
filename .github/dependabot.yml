@@ -4,7 +4,11 @@ updates:
     directory: "/docker-infra/home"
     schedule:
       interval: "weekly"
+      day: "saturday"
+      time: "06:00"
   - package-ecosystem: "docker"
     directory: "/docker-beets"
     schedule:
       interval: "weekly"
+      day: "saturday"
+      time: "06:00"
