@@ -101,7 +101,7 @@ services:
       - beets-secret-config
 
   lidarr:
-    image: ghcr.io/linuxserver-labs/prarr@sha256:34221e1325a694f46528f19e2aaabb25a46da6730ea41b1a6352e09a4d1223e2
+    image: blampe/lidarr:lidarr-plugins-2.12.3.4655
     restart: unless-stopped
     environment:
       PUID: 1000
