@@ -67,3 +67,10 @@ actions:
       - name: cover_url
         title: Cover URL
         type: url
+
+dashboards:
+  - title: Beets
+    contents:
+      - title: "Import music with Beets"
+      - title: "Force update album cover"
+      - title: "Force update album cover from URL"
