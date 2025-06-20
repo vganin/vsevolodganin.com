@@ -18,6 +18,12 @@ authLocalUsers:
       password: $argon2id$v=19$m=65536,t=4,p=8$KE9Hpr4q+E47LiqC1HxOcw$kGfvCTkWnb3uADi6VIpldfY6mY3Lm7aDhtLxPwnU8yA
 
 actions:
+  - title: "Restart Plex"
+    shell: docker restart home-plex-1
+    icon: <iconify-icon icon="mdi:restart"></iconify-icon>
+    maxConcurrent: 1
+    timeout: 999999
+
   - title: "Import music with Beets"
     shell: |
       docker exec beets sh -c "
@@ -74,3 +80,6 @@ dashboards:
       - title: "Import music with Beets"
       - title: "Force update album cover"
       - title: "Force update album cover from URL"
+  - title: Admin
+    contents:
+      - title: "Restart Plex"
