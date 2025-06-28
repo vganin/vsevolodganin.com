@@ -37,8 +37,8 @@ services:
     restart: unless-stopped
     volumes:
       - ${HDD_PATH:?error}:/srv
-      - ./filebrowser.json:/.filebrowser.json:ro
-      - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database.db
+      - ./filebrowser.json:/config/.settings.json:ro
+      - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database/filebrowser.db
 
   navidrome:
     image: deluan/navidrome:0.56.1
