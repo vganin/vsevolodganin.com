@@ -66,7 +66,7 @@ services:
     network_mode: host
   
   qbittorrent:
-    image: qbittorrentofficial/qbittorrent-nox:5.1.1-1
+    image: qbittorrentofficial/qbittorrent-nox:5.1.2-1
     restart: unless-stopped
     environment:
       - QBT_LEGAL_NOTICE=confirm
