@@ -1,3 +1,3 @@
-FROM lscr.io/linuxserver/beets@sha256:d287c8f3eea702cbca639fe481abaf4a7f43881f4f406298aacc6aa4d19e8bd1
+FROM lscr.io/linuxserver/beets@sha256:c6a8998ae553d2fdccfbd12c490890711af49a799dc3bf72b31e0854cc27f9f3
 RUN apk add --no-cache git
 RUN pip install --no-cache-dir git+https://github.com/edgars-supe/beets-importreplace.git
