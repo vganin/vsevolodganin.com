@@ -111,7 +111,7 @@ services:
       - ${HDD_PATH:?error}/downloads/lidarr:/downloads
 
   slskd:
-    image: slskd/slskd:0.22.5
+    image: slskd/slskd:0.23.1
     restart: unless-stopped
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
