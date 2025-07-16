@@ -111,6 +111,7 @@ services:
         - ./beets.yaml:/config/beets/config.yaml:ro
         - ./beets-flask.yaml:/config/beets-flask/config.yaml:ro
         - ./beets-flask-requirements.txt:/config/requirements.txt:ro
+        - ./beets-flask-startup.sh:/config/startup.sh:ro
         - ${HDD_PATH:?error}/musick:/music
         - ${HDD_PATH:?error}/downloads:/downloads
     secrets:
