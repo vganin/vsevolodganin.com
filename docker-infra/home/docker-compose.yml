@@ -99,6 +99,23 @@ services:
     secrets:
       - beets-secret-config
 
+  beets-flask:
+    image: pspitzner/beets-flask:v1.0.0
+    restart: unless-stopped
+    environment:
+        USER_ID: 1000
+        GROUP_ID: 1000
+    volumes:
+        - ${APP_DATA_PATH:?error}/beets-flask:/config
+        - ${APP_DATA_PATH:?error}/beets/library.db:/config/beets/library.db
+        - ./beets.yaml:/config/beets/config.yaml:ro
+        - ./beets-flask.yaml:/config/beets-flask/config.yaml:ro
+        - ./beets-flask-requirements.txt:/config/requirements.txt:ro
+        - ${HDD_PATH:?error}/musick:/music
+        - ${HDD_PATH:?error}/downloads:/downloads
+    secrets:
+      - beets-secret-config
+
   lidarr:
     image: blampe/lidarr:lidarr-plugins-2.13.0.4661
     restart: unless-stopped
@@ -150,6 +167,7 @@ services:
       - slskd
       - olivetin
       - pyload
+      - beets-flask
     restart: unless-stopped
     environment:
       CERTBOT_EMAIL: vsevolod.ganin@gmail.com

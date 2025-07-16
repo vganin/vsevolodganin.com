@@ -1,0 +1,16 @@
+gui:
+    num_preview_workers: 4
+
+    library:
+        readonly: no
+        artist_separators: [",", ";", "&", "and", "/", "|"]
+
+    terminal:
+        start_path: "/downloads"
+
+    inbox:
+        folders:
+            downloads:
+                name: "Downloads"
+                path: "/downloads"
+                autotag: no
