@@ -48,6 +48,7 @@ services:
       ND_ENABLESHARING: true
       ND_SCANNER_EXTRACTOR: ffmpeg
       ND_SCANNER_GENRESEPARATORS: ";"
+      ND_SCANNER_PURGEMISSING: always
       ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY:?error}
       ND_LASTFM_SECRET: ${ND_LASTFM_SECRET:?error}
       ND_COVERARTPRIORITY: cover.*, folder.*, front.*, embedded
