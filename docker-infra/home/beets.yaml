@@ -76,6 +76,8 @@ lastgenre:
     count: 3
     separator: ";"
     prefer_specific: yes
+    force: yes
+    keep_existing: no
 
 zero:
     fields: images comments
