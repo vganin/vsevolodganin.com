@@ -101,7 +101,7 @@ services:
       - beets-secret-config
 
   beets-flask:
-    image: pspitzner/beets-flask:v1.0.0
+    image: pspitzner/beets-flask:v1.0.1
     restart: unless-stopped
     environment:
         USER_ID: 1000
