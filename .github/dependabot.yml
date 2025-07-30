@@ -9,7 +9,7 @@ updates:
     groups:
       beszel:
         patterns:
-          - "beszel*"
+          - "henrygd/beszel*"
   - package-ecosystem: "docker"
     directory: "/docker-beets"
     schedule:
