@@ -6,6 +6,10 @@ updates:
       interval: "weekly"
       day: "saturday"
       time: "06:00"
+    groups:
+      beszel:
+        patterns:
+          - "beszel*"
   - package-ecosystem: "docker"
     directory: "/docker-beets"
     schedule:
