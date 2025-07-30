@@ -140,7 +140,7 @@ services:
       - ${HDD_PATH:?error}/downloads/slskd:/app/downloads
 
   olivetin:
-    image: jamesread/olivetin:2025.7.13
+    image: jamesread/olivetin:2025.7.29
     restart: unless-stopped
     user: root
     volumes:
