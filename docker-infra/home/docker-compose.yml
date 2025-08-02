@@ -1,7 +1,7 @@
 services:
 
   beszel:
-    image: henrygd/beszel:0.12.1
+    image: henrygd/beszel:0.12.2
     restart: unless-stopped
     ports:
       - 8090:8090
@@ -10,7 +10,7 @@ services:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
 
   beszel-agent:
-    image: henrygd/beszel-agent:0.12.1
+    image: henrygd/beszel-agent:0.12.2
     restart: unless-stopped
     network_mode: host
     volumes:
