@@ -149,7 +149,7 @@ services:
       - ./olivetin.yaml:/config/config.yaml:ro
 
   pyload:
-    image: lscr.io/linuxserver/pyload-ng@sha256:9706ae6acbda5d8d854ceb57d86d7bf4c4f312f82390bf1b8891e4bbc50c8aa3
+    image: lscr.io/linuxserver/pyload-ng@sha256:3f324e96ade48da3b4202d6fe853ae98c3150bc4021106a213b081a639d88376
     restart: unless-stopped
     environment:
       - PUID=1000
