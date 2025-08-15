@@ -119,7 +119,7 @@ services:
       - beets-secret-config
 
   lidarr:
-    image: blampe/lidarr:lidarr-plugins-2.13.1.4678
+    image: blampe/lidarr:lidarr-plugins-2.13.2.4686
     restart: unless-stopped
     environment:
       PUID: 1000
