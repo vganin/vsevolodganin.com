@@ -56,7 +56,7 @@ services:
       - ${HDD_PATH:?error}/musick:/music:ro
 
   plex:
-    image: plexinc/pms-docker:1.41.6.9685-d301f511a
+    image: plexinc/pms-docker:1.42.1.10054-f333bdaa8
     restart: unless-stopped
     volumes:
       - ${APP_DATA_PATH:?error}/plex/config:/config
