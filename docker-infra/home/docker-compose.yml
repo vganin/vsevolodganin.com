@@ -84,23 +84,9 @@ services:
       - ${HDD_PATH:?error}/tvshows:/tvshows
       - ${HDD_PATH:?error}/books:/books
 
-  beets:
-    build: ../../docker-beets
-    container_name: beets # Need explicit name to be reliably accessible from olivetin
-    restart: unless-stopped
-    environment:
-      PUID: 1000
-      PGUID: 1000
-    volumes:
-      - ${APP_DATA_PATH:?error}/beets:/config
-      - ./beets.yaml:/config/config.yaml:ro
-      - ${HDD_PATH:?error}/musick:/music
-      - ${HDD_PATH:?error}/downloads:/downloads
-    secrets:
-      - beets-secret-config
-
   beets-flask:
     image: pspitzner/beets-flask:v1.1.3
+    container_name: beets # Need explicit name to be reliably accessible from olivetin
     restart: unless-stopped
     environment:
         USER_ID: 1000
