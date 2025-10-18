@@ -86,7 +86,6 @@ services:
 
   beets-flask:
     image: pspitzner/beets-flask:v1.1.3
-    container_name: beets # Need explicit name to be reliably accessible from olivetin
     restart: unless-stopped
     environment:
         USER_ID: 1000

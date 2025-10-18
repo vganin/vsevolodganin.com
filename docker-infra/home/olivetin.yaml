@@ -26,7 +26,7 @@ actions:
 
   - title: "Import music with Beets"
     shell: |
-      docker exec beets sh -c "
+      docker exec home-beets-flask-1 sh -c "
       beet import -q /downloads
       beet dup -ad
       "
@@ -37,7 +37,7 @@ actions:
 
   - title: "Force update album cover"
     shell: |
-      docker exec beets sh -c "
+      docker exec home-beets-flask-1 sh -c "
       beet fetchart -f {{ filter }}
       "
     popupOnStart: execution-dialog
@@ -54,7 +54,7 @@ actions:
 
   - title: "Force update album cover from URL"
     shell: |
-      docker exec beets sh -c "
+      docker exec home-beets-flask-1 sh -c "
       beet modify -ay {{ filter }} cover_art_url='{{ cover_url }}'
       beet fetchart -f {{ filter }}
       beet modify -ay {{ filter }} cover_art_url!
