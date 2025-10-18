@@ -1,1 +1,2 @@
 git+https://github.com/edgars-supe/beets-importreplace.git
+beets[lyrics]

@@ -19,6 +19,7 @@ plugins:
     - subsonicupdate
     - badfiles
     - importreplace
+    - lyrics
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
@@ -112,3 +113,6 @@ importreplace:
 
 badfiles:
     check_on_import: yes
+
+lyrics:
+    auto: no
