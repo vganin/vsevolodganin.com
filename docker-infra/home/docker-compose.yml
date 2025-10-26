@@ -116,6 +116,8 @@ services:
   slskd:
     image: slskd/slskd:0.23.2
     restart: unless-stopped
+    ports:
+      - "50300:50300"
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
     volumes:
