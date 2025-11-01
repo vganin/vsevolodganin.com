@@ -126,7 +126,7 @@ services:
       - ${HDD_PATH:?error}/downloads/slskd:/app/downloads
 
   olivetin:
-    image: jamesread/olivetin:2025.10.24
+    image: jamesread/olivetin:2025-10-30
     restart: unless-stopped
     user: root
     volumes:
