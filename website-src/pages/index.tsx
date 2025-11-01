@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Typography from "@mui/material/Typography";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedinIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import {Box, IconButton, Link, Tooltip} from "@mui/material";
@@ -64,7 +63,6 @@ export default function () {
                 <div className="social">
                     <SocialLinkButton tooltip="GitHub" href="https://github.com/vganin"><GitHubIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Twitter" href="https://twitter.com/vsga_dev"><TwitterIcon fontSize="large"/></SocialLinkButton>
-                    <SocialLinkButton tooltip="Facebook" href="https://facebook.com/vsevolod.ganin"><FacebookIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Linkedin" href="https://linkedin.com/in/vganin/"><LinkedinIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="E-mail me!" href="mailto:contact@vsevolodganin.com"><EmailIcon fontSize="large"/></SocialLinkButton>
                 </div>
