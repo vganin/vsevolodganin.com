@@ -1,12 +1,12 @@
 import React from "react";
 import Head from 'next/head';
-import Typography from "@material-ui/core/Typography";
-import GitHubIcon from '@material-ui/icons/GitHub';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedinIcon from '@material-ui/icons/LinkedIn';
-import EmailIcon from '@material-ui/icons/Email';
-import {Box, IconButton, Link, Tooltip} from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedinIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
+import {Box, IconButton, Link, Tooltip} from "@mui/material";
 
 export default function () {
     const SocialLinkButton = (props: React.PropsWithChildren<{ href: string; tooltip: string }>) => (
@@ -27,7 +27,7 @@ export default function () {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                gridGap="16pt"
+                gap="16pt"
                 margin="16pt"
             >
                 <style jsx>{`
@@ -79,11 +79,11 @@ export default function () {
                     display="flex"
                     flexDirection="row"
                     flexWrap="wrap"
-                    gridGap="16pt"
+                    gap="16pt"
                     alignItems="center"
                     justifyContent="space-around"
                 >
-                    <Box display="flex" flexDirection="row" alignItems="center" gridGap="16pt" flexWrap="no-wrap">
+                    <Box display="flex" flexDirection="row" alignItems="center" gap="16pt" flexWrap="nowrap">
                         <Typography variant="h4" align="center" style={{color: "#A53030", textShadow: "1px 1px 2pt #000000", fontWeight: 600}}>
                             Click Track
                         </Typography>

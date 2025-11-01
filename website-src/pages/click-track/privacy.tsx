@@ -1,6 +1,6 @@
 import React from "react";
 import Head from 'next/head';
-import {Box, Divider, Link, Typography} from "@material-ui/core";
+import {Box, Divider, Link, Typography} from "@mui/material";
 
 export default function () {
     return (
@@ -9,7 +9,7 @@ export default function () {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                gridGap="32pt"
+                gap="32pt"
                 margin="32pt"
                 maxWidth="800px"
             >

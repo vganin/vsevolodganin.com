@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import {ThemeProvider} from "@material-ui/core";
+import CssBaseline from '@mui/material/CssBaseline';
+import {ThemeProvider} from "@mui/material/styles";
 import theme from "../src/theme";
 
 export default function MyApp({Component, pageProps}: any) {
