@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:25-alpine
 WORKDIR /website
 COPY . .
 RUN npm ci && npm run build
