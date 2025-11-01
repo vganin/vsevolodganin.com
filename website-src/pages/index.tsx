@@ -36,10 +36,6 @@ export default function () {
                     width: 150pt;
                   }
 
-                  .hi {
-                    text-align: center;
-                  }
-
                   .social {
                     display: flex;
                     flex-direction: row;
@@ -54,24 +50,12 @@ export default function () {
                     className="profile"
                 />
 
-                <div className="hi">
-                    <Typography variant="h6">
-                        Personal website of Vsevolod Ganin
-                    </Typography>
-                </div>
-
                 <div className="social">
                     <SocialLinkButton tooltip="GitHub" href="https://github.com/vganin"><GitHubIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Twitter" href="https://twitter.com/vsga_dev"><TwitterIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="Linkedin" href="https://linkedin.com/in/vganin/"><LinkedinIcon fontSize="large"/></SocialLinkButton>
                     <SocialLinkButton tooltip="E-mail me!" href="mailto:contact@vsevolodganin.com"><EmailIcon fontSize="large"/></SocialLinkButton>
                 </div>
-
-                <Typography variant="h6">
-                    <hr/>
-                    Personal projects
-                    <br/>
-                </Typography>
 
                 <Box
                     display="flex"
