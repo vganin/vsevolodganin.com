@@ -1,0 +1,53 @@
+{
+	email vsevolod.ganin@gmail.com
+}
+
+beszel.vsevolodganin.com {
+	reverse_proxy beszel:8090
+}
+
+filebrowser.vsevolodganin.com {
+	reverse_proxy filebrowser:80
+}
+
+music.vsevolodganin.com {
+	reverse_proxy navidrome:4533
+}
+
+plex.vsevolodganin.com {
+	reverse_proxy host.docker.internal:32400
+}
+
+torrent.vsevolodganin.com {
+	reverse_proxy qbittorrent:8080
+}
+
+lidarr.vsevolodganin.com {
+	reverse_proxy lidarr:8686
+}
+
+olivetin.vsevolodganin.com {
+	reverse_proxy olivetin:1337
+	
+	@websocket path /websocket*
+	reverse_proxy @websocket olivetin:1337
+}
+
+slsk.vsevolodganin.com {
+	reverse_proxy slskd:5030
+}
+
+pyload.vsevolodganin.com {
+	reverse_proxy pyload:8000
+}
+
+beets.vsevolodganin.com {
+    basic_auth {
+		vsga $2a$14$/8dchwC.dHIDwoLv9.P5eeebAVWG0uYOt5Z0pUnKvoAyIPk4dJkkO
+	}
+
+	reverse_proxy beets-flask:5001
+	
+	@socketio path /socket.io/*
+	reverse_proxy @socketio beets-flask:5001
+}
