@@ -3,6 +3,9 @@ directory: /music
 
 include: [/run/secrets/beets-secret-config]
 
+pluginpath:
+    - /beetsplug
+
 plugins: 
     - web
     - inline
@@ -20,6 +23,7 @@ plugins:
     - badfiles
     - importreplace
     - lyrics
+    - fetcharturl
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
