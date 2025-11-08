@@ -26,13 +26,6 @@ lidarr.vsevolodganin.com {
 	reverse_proxy lidarr:8686
 }
 
-olivetin.vsevolodganin.com {
-	reverse_proxy olivetin:1337
-	
-	@websocket path /websocket*
-	reverse_proxy @websocket olivetin:1337
-}
-
 slsk.vsevolodganin.com {
 	reverse_proxy slskd:5030
 }
