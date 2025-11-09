@@ -1,0 +1,5 @@
+ScannerEnabled = false
+EnableSharing = true
+ScannerExtractor = "ffmpeg"
+ScannerGenreSeparators = ";"
+CoverArtPriority = "cover.*, folder.*, front.*, embedded"

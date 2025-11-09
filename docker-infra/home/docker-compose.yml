@@ -44,16 +44,13 @@ services:
     image: deluan/navidrome:0.58.0
     restart: unless-stopped
     environment:
-      ND_SCANNER_ENABLED: false
-      ND_ENABLESHARING: true
-      ND_SCANNER_EXTRACTOR: ffmpeg
-      ND_SCANNER_GENRESEPARATORS: ";"
+      ND_CONFIGFILE: /data/navidrome.toml
       ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY:?error}
       ND_LASTFM_SECRET: ${ND_LASTFM_SECRET:?error}
-      ND_COVERARTPRIORITY: cover.*, folder.*, front.*, embedded
     volumes:
       - ${APP_DATA_PATH:?error}/navidrome/data:/data
       - ${HDD_PATH:?error}/musick:/music:ro
+      - ./navidrome.toml:/data/navidrome.toml:ro
 
   plex:
     image: plexinc/pms-docker:1.41.6.9685-d301f511a
