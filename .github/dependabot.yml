@@ -10,9 +10,3 @@ updates:
       beszel:
         patterns:
           - "henrygd/beszel*"
-  - package-ecosystem: "docker"
-    directory: "/docker-beets"
-    schedule:
-      interval: "weekly"
-      day: "saturday"
-      time: "06:00"
