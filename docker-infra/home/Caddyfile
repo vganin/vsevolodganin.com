@@ -11,9 +11,6 @@ filebrowser.vsevolodganin.com {
 }
 
 music.vsevolodganin.com {
-	@coverart path /rest/getCoverArt*
-	header @coverart Cache-Control "no-store, no-cache, must-revalidate"
-	
 	reverse_proxy navidrome:4533
 }
 
