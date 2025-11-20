@@ -39,9 +39,6 @@ import:
     write: yes
     incremental: yes
     incremental_skip_later: yes
-    duplicate_keys:
-        album: mb_releasegroupid albumartist year album
-        item: mb_trackid disc track title
     duplicate_action: ask
     duplicate_verbose_prompt: yes
     bell: yes
@@ -90,8 +87,7 @@ zero:
 
 duplicates:
     action: ask
-    full: yes
-    count: yes
+    path: yes
     tiebreak:
         bitrate: max
         format: flac
