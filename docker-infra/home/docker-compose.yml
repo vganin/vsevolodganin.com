@@ -61,6 +61,8 @@ services:
       - ${HDD_PATH:?error}/movies:/movies
       - ${HDD_PATH:?error}/tvshows:/tvshows
     network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
   
   qbittorrent:
     image: qbittorrentofficial/qbittorrent-nox:5.1.4-1
