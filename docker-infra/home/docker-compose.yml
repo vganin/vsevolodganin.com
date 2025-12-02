@@ -114,7 +114,7 @@ services:
       - ${HDD_PATH:?error}/downloads/lidarr:/downloads
 
   slskd:
-    image: slskd/slskd:0.24.0
+    image: slskd/slskd:0.24.1
     restart: unless-stopped
     ports:
       - "50300:50300"
