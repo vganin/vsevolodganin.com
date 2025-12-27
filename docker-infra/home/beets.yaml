@@ -46,7 +46,7 @@ import:
 
 aunique:
     keys: albumartist year album
-    disambiguators: albumtype year label catalognum albumdisambig releasegroupdisambig
+    disambiguators: albumdisambig releasegroupdisambig albumtype year catalognum
     bracket: '[]'
 
 paths:
