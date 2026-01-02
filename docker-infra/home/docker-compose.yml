@@ -84,7 +84,7 @@ services:
       - ${HDD_PATH:?error}/books:/books
 
   beets-flask:
-    image: pspitzner/beets-flask:v1.2.0
+    image: pspitzner/beets-flask:v1.2.1
     restart: unless-stopped
     environment:
         USER_ID: 1000
