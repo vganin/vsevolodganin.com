@@ -65,7 +65,7 @@ services:
       - /dev/dri:/dev/dri
   
   qbittorrent:
-    image: qbittorrentofficial/qbittorrent-nox:5.1.4-1
+    image: qbittorrentofficial/qbittorrent-nox:5.1.4-2
     restart: unless-stopped
     environment:
       - QBT_LEGAL_NOTICE=confirm
