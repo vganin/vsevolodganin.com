@@ -53,7 +53,7 @@ services:
       - ./navidrome.toml:/data/navidrome.toml:ro
 
   plex:
-    image: plexinc/pms-docker:1.43.0.10467-2b1ba6e69
+    image: plexinc/pms-docker:1.41.6.9685-d301f511a
     restart: unless-stopped
     volumes:
       - ${APP_DATA_PATH:?error}/plex/config:/config
