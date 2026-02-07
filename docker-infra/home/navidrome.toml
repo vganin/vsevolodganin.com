@@ -1,4 +1,4 @@
-ScannerEnabled = false
+Scanner.Enabled = false
 EnableSharing = true
 ScannerGenreSeparators = ";"
-CoverArtPriority = "cover.*, folder.*, front.*, embedded"
+ImageCacheSize = "0"

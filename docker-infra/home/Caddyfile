@@ -10,7 +10,8 @@ filebrowser.vsevolodganin.com {
 	reverse_proxy filebrowser:80
 }
 
-music.vsevolodganin.com {
+music.vsevolodganin.com {	
+	header /rest/getCoverArt* >Cache-Control no-cache
 	reverse_proxy navidrome:4533
 }
 
