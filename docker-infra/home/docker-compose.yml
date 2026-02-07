@@ -41,7 +41,7 @@ services:
       - ${APP_DATA_PATH:?error}/filebrowser/database.db:/database/filebrowser.db
 
   navidrome:
-    image: deluan/navidrome:0.59.0
+    image: deluan/navidrome:0.60.0
     restart: unless-stopped
     environment:
       ND_CONFIGFILE: /data/navidrome.toml
