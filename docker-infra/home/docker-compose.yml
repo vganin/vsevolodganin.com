@@ -33,7 +33,7 @@ services:
       - ddns-api-key
 
   filebrowser:
-    image: filebrowser/filebrowser:v2.59.0
+    image: filebrowser/filebrowser:v2.60.0
     restart: unless-stopped
     volumes:
       - ${HDD_PATH:?error}:/srv
