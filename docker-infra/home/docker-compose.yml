@@ -82,6 +82,22 @@ services:
       - ${HDD_PATH:?error}/movies:/movies
       - ${HDD_PATH:?error}/tvshows:/tvshows
       - ${HDD_PATH:?error}/books:/books
+      - ${APP_DATA_PATH:?error}/vuetorrent:/vuetorrent:ro
+  
+  vuetorrent-updater:
+    image: alpine/git:2.47.1
+    restart: "no"
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        if [ ! -d /data/.git ]; then
+          git clone --single-branch --branch latest-release https://github.com/VueTorrent/VueTorrent.git /data
+        else
+          git -C /data pull --ff-only
+        fi
+    volumes:
+      - ${APP_DATA_PATH:?error}/vuetorrent:/data
 
   beets-flask:
     image: pspitzner/beets-flask:v1.2.1
