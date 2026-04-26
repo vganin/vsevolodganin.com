@@ -19,6 +19,10 @@ plex.vsevolodganin.com {
 	reverse_proxy host.docker.internal:32400
 }
 
+jellyfin.vsevolodganin.com {
+	reverse_proxy host.docker.internal:8096
+}
+
 torrent.vsevolodganin.com {
 	reverse_proxy qbittorrent:8080
 }
