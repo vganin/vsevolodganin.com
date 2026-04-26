@@ -63,6 +63,20 @@ services:
     network_mode: host
     devices:
       - /dev/dri:/dev/dri
+
+  jellyfin:
+    image: jellyfin/jellyfin:10.11.8
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_PATH:?error}/jellyfin/config:/config
+      - ${APP_DATA_PATH:?error}/jellyfin/cache:/cache
+      - ${HDD_PATH:?error}/movies:/movies:ro
+      - ${HDD_PATH:?error}/tvshows:/tvshows:ro
+    group_add:
+      - '993'
+    network_mode: host
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
   
   qbittorrent:
     image: qbittorrentofficial/qbittorrent-nox:5.1.4-2
