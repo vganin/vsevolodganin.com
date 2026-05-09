@@ -79,7 +79,7 @@ services:
       - /dev/dri/renderD128:/dev/dri/renderD128
   
   qbittorrent:
-    image: qbittorrentofficial/qbittorrent-nox:5.1.4-2
+    image: qbittorrentofficial/qbittorrent-nox:5.2.0-1
     restart: unless-stopped
     environment:
       - QBT_LEGAL_NOTICE=confirm
