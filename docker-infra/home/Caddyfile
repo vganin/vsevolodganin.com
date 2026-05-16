@@ -16,7 +16,13 @@ music.vsevolodganin.com {
 }
 
 plex.vsevolodganin.com {
-	reverse_proxy host.docker.internal:32400
+	reverse_proxy plex:32400
+}
+
+# FIXME: Workaround for https://forums.plex.tv/t/bug-lg-webos-10-x-playback-error-400-http-header-overflow-due-to-client-profile-bloat/938343 
+:32400 {
+	request_header -Referer
+	reverse_proxy plex:32400
 }
 
 jellyfin.vsevolodganin.com {
