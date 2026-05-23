@@ -74,7 +74,7 @@ services:
       - /dev/dri:/dev/dri
 
   jellyfin:
-    image: jellyfin/jellyfin:10.11.8
+    image: jellyfin/jellyfin:10.11.9
     restart: unless-stopped
     volumes:
       - ${APP_DATA_PATH:?error}/jellyfin/config:/config
