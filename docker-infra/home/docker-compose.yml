@@ -175,7 +175,7 @@ services:
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
 
   caddy:
-    image: caddy:2.11.3-alpine
+    image: caddy:2.11.4-alpine
     restart: unless-stopped
     ports:
       - "80:80"
