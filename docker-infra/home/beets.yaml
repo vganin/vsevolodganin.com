@@ -57,9 +57,6 @@ paths:
 item_fields:
     multidisc: 1 if disctotal > 1 else 0
 
-musicbrainz:
-    enabled: yes
-
 fetchart:
     cautious: true
     store_source: yes

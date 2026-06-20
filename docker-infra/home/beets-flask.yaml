@@ -13,4 +13,4 @@ gui:
             downloads:
                 name: "Downloads"
                 path: "/downloads"
-                autotag: no
+                autotag: "off"
