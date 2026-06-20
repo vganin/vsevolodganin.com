@@ -108,7 +108,7 @@ services:
       - ${APP_DATA_PATH:?error}/vuetorrent:/vuetorrent:ro
   
   vuetorrent-updater:
-    image: alpine/git:v2.52.0
+    image: alpine/git:v2.54.0
     restart: "no"
     entrypoint:
       - /bin/sh
