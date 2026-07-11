@@ -165,7 +165,7 @@ services:
       - ${HDD_PATH:?error}/downloads/slskd:/app/downloads
 
   pyload:
-    image: lscr.io/linuxserver/pyload-ng@sha256:dfd8bd904e0a538adda21230d09cd238c9719a269dbc89b0dbc41d4c745da6dd
+    image: lscr.io/linuxserver/pyload-ng@sha256:4280e6de9727dec17eca38da03e66d5066f2e0b699edad516477858333c2998a
     restart: unless-stopped
     environment:
       - PUID=1000
