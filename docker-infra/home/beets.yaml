@@ -25,6 +25,7 @@ plugins:
     - importreplace
     - lyrics
     - fetcharturl
+    - fromfilename
 
 format_item: $albumartist/($year) $album%aunique{}/%if{$multidisc,$disc.}$track. $title
 format_album: $albumartist/($year) $album%aunique{}
