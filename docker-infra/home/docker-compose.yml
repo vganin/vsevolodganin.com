@@ -114,7 +114,7 @@ services:
       - ${APP_DATA_PATH:?error}/vuetorrent:/data
 
   beets-flask:
-    image: pspitzner/beets-flask:v2.0.0-rc6
+    image: metasauce/beets-flask:v2.0.0-rc6
     restart: unless-stopped
     environment:
         USER_ID: 1000
