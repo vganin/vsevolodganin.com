@@ -112,3 +112,6 @@ importreplace:
 
 badfiles:
     check_on_import: yes
+
+lyrics:
+    auto: no
