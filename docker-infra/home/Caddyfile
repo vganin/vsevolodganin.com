@@ -45,3 +45,7 @@ beets.vsevolodganin.com {
 	@socketio path /socket.io/*
 	reverse_proxy @socketio beets-flask:5001
 }
+
+ai.vsevolodganin.com {
+	reverse_proxy open-webui:8080
+}

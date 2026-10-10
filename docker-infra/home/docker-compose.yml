@@ -151,6 +151,24 @@ services:
       - ${APP_DATA_PATH:?error}/pyload:/config
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
 
+  ollama:
+    image: ollama/ollama:0.40.2
+    restart: unless-stopped
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      OLLAMA_IGPU_ENABLE: "1"
+    volumes:
+      - ${APP_DATA_PATH:?error}/ollama/models:/root/.ollama
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:v0.11.4
+    restart: unless-stopped
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+    volumes:
+      - ${APP_DATA_PATH:?error}/open-webui/data:/app/backend/data
+
   caddy:
     image: caddy:2.11.7-alpine
     restart: unless-stopped
