@@ -152,7 +152,7 @@ services:
       - ${HDD_PATH:?error}/downloads/pyload:/downloads
 
   ollama:
-    image: ollama/ollama:0.40.2
+    image: ollama/ollama:0.40.4
     restart: unless-stopped
     devices:
       - /dev/dri:/dev/dri
