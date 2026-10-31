@@ -162,7 +162,7 @@ services:
       - ${APP_DATA_PATH:?error}/ollama/models:/root/.ollama
 
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.12.3
+    image: ghcr.io/open-webui/open-webui:v0.12.5
     restart: unless-stopped
     environment:
       OLLAMA_BASE_URL: http://ollama:11434
