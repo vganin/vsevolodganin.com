@@ -48,3 +48,7 @@ beets.vsevolodganin.com {
 ai.vsevolodganin.com {
 	reverse_proxy open-webui:8080
 }
+
+obsidian.vsevolodganin.com {
+	reverse_proxy obsidian-livesync:5984
+}

@@ -169,6 +169,17 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/open-webui/data:/app/backend/data
 
+  obsidian-livesync:
+    image: oleduc/docker-obsidian-livesync-couchdb:1.0.3
+    restart: unless-stopped
+    environment:
+      SERVER_DOMAIN: obsidian.vsevolodganin.com
+      COUCHDB_USER: ${OBSIDIAN_COUCHDB_USER:?error}
+      COUCHDB_PASSWORD: ${OBSIDIAN_COUCHDB_PASSWORD:?error}
+      COUCHDB_DATABASE: obsidian
+    volumes:
+      - ${APP_DATA_PATH:?error}/obsidian-livesync/data:/opt/couchdb/data
+
   caddy:
     image: caddy:2.11.7-alpine
     restart: unless-stopped
