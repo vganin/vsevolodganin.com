@@ -181,7 +181,7 @@ services:
       - ${APP_DATA_PATH:?error}/obsidian-livesync/data:/opt/couchdb/data
 
   caddy:
-    image: caddy:2.11.7-alpine
+    image: caddy:2.11.8-alpine
     restart: unless-stopped
     ports:
       - "80:80"
