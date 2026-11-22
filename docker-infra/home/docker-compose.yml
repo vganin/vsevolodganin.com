@@ -3,8 +3,6 @@ services:
   beszel:
     image: henrygd/beszel:0.21.2
     restart: unless-stopped
-    ports:
-      - 8090:8090
     volumes:
       - ${APP_DATA_PATH:?error}/beszel/data:/beszel_data
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
