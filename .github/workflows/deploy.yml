@@ -26,5 +26,10 @@ jobs:
             set -e
             cd /home/vsga/vsevolodganin.com/docker-infra/home
             git pull origin main
-            docker compose pull
-            docker compose up -d --build --remove-orphans
+            services=$(docker compose ps --services --status running)
+            if [ -z "$services" ]; then
+              echo "No running services, skipping container refresh"
+              exit 0
+            fi
+            docker compose pull $services
+            docker compose up -d --build --no-deps --remove-orphans $services
