@@ -12,13 +12,12 @@ services:
     restart: unless-stopped
     network_mode: host
     devices:
-      - /dev/sdb:/dev/sdb
+      - /dev/sda:/dev/sda
     cap_add:
       - SYS_RAWIO
     volumes:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
       - /media/hell:/extra-filesystems/sda1__hell:ro
-      - /media/purgatory:/extra-filesystems/sdb1__purgatory:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       LISTEN: /beszel_socket/beszel.sock
