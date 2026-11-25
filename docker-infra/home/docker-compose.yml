@@ -8,9 +8,13 @@ services:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
 
   beszel-agent:
-    image: henrygd/beszel-agent:0.21.2
+    image: henrygd/beszel-agent:0.21.2-alpine
     restart: unless-stopped
     network_mode: host
+    devices:
+      - /dev/sdb:/dev/sdb
+    cap_add:
+      - SYS_RAWIO
     volumes:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
       - /media/hell:/extra-filesystems/sda1__hell:ro
