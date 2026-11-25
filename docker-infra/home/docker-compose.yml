@@ -13,7 +13,7 @@ services:
     network_mode: host
     volumes:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
-      - /media/hell:/extra-filesystems/sda2__hell:ro
+      - /media/hell:/extra-filesystems/sda1__hell:ro
       - /media/purgatory:/extra-filesystems/sdb1__purgatory:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
