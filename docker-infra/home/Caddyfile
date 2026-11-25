@@ -52,3 +52,7 @@ ai.vsevolodganin.com {
 obsidian.vsevolodganin.com {
 	reverse_proxy obsidian-livesync:5984
 }
+
+docker.vsevolodganin.com {
+	reverse_proxy dozzle:8080
+}

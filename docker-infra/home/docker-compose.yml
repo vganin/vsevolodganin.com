@@ -182,6 +182,15 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/obsidian-livesync/data:/opt/couchdb/data
 
+  dozzle:
+    image: amir20/dozzle:v11.5.0
+    restart: unless-stopped
+    environment:
+      DOZZLE_ENABLE_ACTIONS: true
+    volumes:
+      - ${APP_DATA_PATH:?error}/dozzle:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
   caddy:
     image: caddy:2.11.9-alpine
     restart: unless-stopped
