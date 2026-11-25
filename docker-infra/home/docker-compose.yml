@@ -122,7 +122,7 @@ services:
     restart: unless-stopped
     environment:
       PUID: 1000
-      PGUID: 1000
+      PGID: 1000
     volumes:
       - ${APP_DATA_PATH:?error}/lidarr:/config
       - ${HDD_PATH:?error}/musick:/music:ro
