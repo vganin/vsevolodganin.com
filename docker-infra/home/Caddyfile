@@ -51,14 +51,21 @@ pyload.vsevolodganin.com {
 }
 
 beets.vsevolodganin.com {
-    basic_auth {
-		vsga $2a$14$/8dchwC.dHIDwoLv9.P5eeebAVWG0uYOt5Z0pUnKvoAyIPk4dJkkO
-	}
+	route {
+		request_header -Remote-User
 
-	reverse_proxy beets-flask:5001
-	
-	@socketio path /socket.io/*
-	reverse_proxy @socketio beets-flask:5001
+		reverse_proxy /outpost.goauthentik.io/* authentik-server:9000
+
+		forward_auth authentik-server:9000 {
+			uri /outpost.goauthentik.io/auth/caddy
+			copy_headers X-Authentik-Username>Remote-User
+		}
+
+		@socketio path /socket.io/*
+		reverse_proxy @socketio beets-flask:5001
+
+		reverse_proxy beets-flask:5001
+	}
 }
 
 ai.vsevolodganin.com {

@@ -58,6 +58,23 @@ entries:
     attrs:
       group: !Find [authentik_core.group, [name, authentik Admins]]
 
+  - model: authentik_providers_proxy.proxyprovider
+    id: beets-provider
+    identifiers:
+      name: Beets
+    attrs:
+      mode: forward_single
+      external_host: https://beets.vsevolodganin.com
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+  - model: authentik_core.application
+    identifiers:
+      slug: beets
+    attrs:
+      name: Beets
+      provider: !KeyOf beets-provider
+      meta_launch_url: https://beets.vsevolodganin.com
+
   - model: authentik_outposts.outpost
     identifiers:
       managed: goauthentik.io/outposts/embedded
@@ -67,3 +84,4 @@ entries:
       providers:
         - !KeyOf navidrome-provider
         - !KeyOf dozzle-provider
+        - !KeyOf beets-provider
