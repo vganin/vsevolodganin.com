@@ -173,10 +173,29 @@ services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:v0.13.3
     restart: unless-stopped
+    # Open WebUI has no *_FILE variant for OAUTH_CLIENT_SECRET: export it from
+    # the secret, then exec the image's own CMD (`bash start.sh` in /app/backend).
+    command:
+      - bash
+      - -c
+      - export OAUTH_CLIENT_SECRET="$$(cat /run/secrets/open-webui-oidc-client-secret)" && exec bash start.sh
     environment:
       OLLAMA_BASE_URL: http://ollama:11434
+      # PersistentConfig: only seeded into the DB on first start. On the existing
+      # install, set it once in Admin Panel > Settings > General.
+      WEBUI_URL: https://ai.vsevolodganin.com
+      # oauth.* settings are read from env on every start
+      # (ENABLE_OAUTH_PERSISTENT_CONFIG defaults to false).
+      ENABLE_OAUTH_SIGNUP: true
+      OAUTH_MERGE_ACCOUNTS_BY_EMAIL: true
+      OAUTH_PROVIDER_NAME: Authentik
+      OAUTH_CLIENT_ID: open-webui
+      OPENID_PROVIDER_URL: https://auth.vsevolodganin.com/application/o/open-webui/.well-known/openid-configuration
+      OPENID_REDIRECT_URI: https://ai.vsevolodganin.com/oauth/oidc/callback
     volumes:
       - ${APP_DATA_PATH:?error}/open-webui/data:/app/backend/data
+    secrets:
+      - open-webui-oidc-client-secret
 
   obsidian-livesync:
     image: oleduc/docker-obsidian-livesync-couchdb:1.0.3
@@ -246,6 +265,7 @@ services:
       - authentik-postgres-password
       - authentik-smtp-password
       - beszel-oidc-client-secret
+      - open-webui-oidc-client-secret
     depends_on:
       authentik-postgresql:
         condition: service_healthy
@@ -279,6 +299,7 @@ services:
       - authentik-postgres-password
       - authentik-smtp-password
       - beszel-oidc-client-secret
+      - open-webui-oidc-client-secret
     depends_on:
       authentik-postgresql:
         condition: service_healthy
@@ -313,3 +334,5 @@ secrets:
     file: ./secrets/authentik/smtp-password
   beszel-oidc-client-secret:
     file: ./secrets/beszel/oidc-client-secret
+  open-webui-oidc-client-secret:
+    file: ./secrets/open-webui/oidc-client-secret
