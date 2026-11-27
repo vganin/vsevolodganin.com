@@ -182,6 +182,23 @@ entries:
       provider: !KeyOf beszel-provider
       meta_launch_url: https://beszel.vsevolodganin.com
 
+  - model: authentik_providers_proxy.proxyprovider
+    id: lidarr-provider
+    identifiers:
+      name: Lidarr
+    attrs:
+      mode: forward_single
+      external_host: https://lidarr.vsevolodganin.com
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+  - model: authentik_core.application
+    identifiers:
+      slug: lidarr
+    attrs:
+      name: Lidarr
+      provider: !KeyOf lidarr-provider
+      meta_launch_url: https://lidarr.vsevolodganin.com
+
   - model: authentik_outposts.outpost
     identifiers:
       managed: goauthentik.io/outposts/embedded
@@ -196,3 +213,4 @@ entries:
         - !KeyOf filebrowser-provider
         - !KeyOf slskd-provider
         - !KeyOf qbittorrent-provider
+        - !KeyOf lidarr-provider

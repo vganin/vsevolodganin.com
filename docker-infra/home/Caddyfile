@@ -61,7 +61,19 @@ torrent.vsevolodganin.com {
 }
 
 lidarr.vsevolodganin.com {
-	reverse_proxy lidarr:8686
+	route {
+		request_header -Remote-User
+
+		reverse_proxy /outpost.goauthentik.io/* authentik-server:9000
+
+		@sso not path /api/* /feed/*
+		forward_auth @sso authentik-server:9000 {
+			uri /outpost.goauthentik.io/auth/caddy
+			copy_headers X-Authentik-Username>Remote-User
+		}
+
+		reverse_proxy lidarr:8686
+	}
 }
 
 slsk.vsevolodganin.com {

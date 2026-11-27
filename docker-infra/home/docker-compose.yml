@@ -129,6 +129,7 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
+      LIDARR__AUTH__METHOD: External
     volumes:
       - ${APP_DATA_PATH:?error}/lidarr:/config
       - ${HDD_PATH:?error}/musick:/music:ro
