@@ -2,3 +2,7 @@ Scanner.Enabled = false
 EnableSharing = true
 ScannerGenreSeparators = ";"
 ImageCacheSize = "0"
+
+Address = "unix:/run/navidrome/navidrome.sock"
+ExtAuth.TrustedSources = "@"
+ExtAuth.LogoutURL = "https://music.vsevolodganin.com/outpost.goauthentik.io/sign_out"

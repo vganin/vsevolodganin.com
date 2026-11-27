@@ -50,6 +50,7 @@ services:
       ND_LASTFM_APIKEY: ${ND_LASTFM_APIKEY:?error}
       ND_LASTFM_SECRET: ${ND_LASTFM_SECRET:?error}
     volumes:
+      - navidrome-socket:/run/navidrome
       - ${APP_DATA_PATH:?error}/navidrome/data:/data
       - ${HDD_PATH:?error}/musick:/music:ro
       - ./navidrome.toml:/data/navidrome.toml:ro
@@ -191,6 +192,88 @@ services:
       - ${APP_DATA_PATH:?error}/dozzle:/data
       - /var/run/docker.sock:/var/run/docker.sock
 
+  authentik-postgresql:
+    image: postgres:16.16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: authentik
+      POSTGRES_USER: authentik
+      POSTGRES_PASSWORD_FILE: /run/secrets/authentik-postgres-password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d authentik -U authentik"]
+      interval: 30s
+      retries: 5
+      start_period: 20s
+      timeout: 5s
+    volumes:
+      - ${APP_DATA_PATH:?error}/authentik/postgresql:/var/lib/postgresql/data
+    secrets:
+      - authentik-postgres-password
+
+  authentik-server:
+    image: ghcr.io/goauthentik/server:2026.8.7
+    restart: unless-stopped
+    command: server
+    shm_size: 512mb
+    environment:
+      AUTHENTIK_SECRET_KEY: file:///run/secrets/authentik-secret-key
+      AUTHENTIK_WEB__BASE_URL: https://auth.vsevolodganin.com
+      AUTHENTIK_POSTGRESQL__HOST: authentik-postgresql
+      AUTHENTIK_POSTGRESQL__NAME: authentik
+      AUTHENTIK_POSTGRESQL__USER: authentik
+      AUTHENTIK_POSTGRESQL__PASSWORD: file:///run/secrets/authentik-postgres-password
+      AUTHENTIK_EMAIL__HOST: smtp.gmail.com
+      AUTHENTIK_EMAIL__PORT: 587
+      AUTHENTIK_EMAIL__USE_TLS: true
+      AUTHENTIK_EMAIL__USERNAME: vsevolod.ganin@gmail.com
+      AUTHENTIK_EMAIL__PASSWORD: file:///run/secrets/authentik-smtp-password
+      AUTHENTIK_EMAIL__FROM: Auth <no-reply-auth@vsevolodganin.com>
+    env_file:
+      - path: ./secrets/authentik/bootstrap.env
+        required: false
+    volumes:
+      - ${APP_DATA_PATH:?error}/authentik/data:/data
+      - ./authentik-blueprints:/blueprints/custom:ro
+    secrets:
+      - authentik-secret-key
+      - authentik-postgres-password
+      - authentik-smtp-password
+    depends_on:
+      authentik-postgresql:
+        condition: service_healthy
+
+  authentik-worker:
+    image: ghcr.io/goauthentik/server:2026.8.7
+    restart: unless-stopped
+    command: worker
+    shm_size: 512mb
+    environment:
+      AUTHENTIK_SECRET_KEY: file:///run/secrets/authentik-secret-key
+      AUTHENTIK_WEB__BASE_URL: https://auth.vsevolodganin.com
+      AUTHENTIK_POSTGRESQL__HOST: authentik-postgresql
+      AUTHENTIK_POSTGRESQL__NAME: authentik
+      AUTHENTIK_POSTGRESQL__USER: authentik
+      AUTHENTIK_POSTGRESQL__PASSWORD: file:///run/secrets/authentik-postgres-password
+      AUTHENTIK_EMAIL__HOST: smtp.gmail.com
+      AUTHENTIK_EMAIL__PORT: 587
+      AUTHENTIK_EMAIL__USE_TLS: true
+      AUTHENTIK_EMAIL__USERNAME: vsevolod.ganin@gmail.com
+      AUTHENTIK_EMAIL__PASSWORD: file:///run/secrets/authentik-smtp-password
+      AUTHENTIK_EMAIL__FROM: Auth <no-reply-auth@vsevolodganin.com>
+    env_file:
+      - path: ./secrets/authentik/bootstrap.env
+        required: false
+    volumes:
+      - ${APP_DATA_PATH:?error}/authentik/data:/data
+      - ./authentik-blueprints:/blueprints/custom:ro
+    secrets:
+      - authentik-secret-key
+      - authentik-postgres-password
+      - authentik-smtp-password
+    depends_on:
+      authentik-postgresql:
+        condition: service_healthy
+
   caddy:
     image: caddy:2.11.9-alpine
     restart: unless-stopped
@@ -201,11 +284,21 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ${APP_DATA_PATH:?error}/caddy/data:/data
       - ${APP_DATA_PATH:?error}/caddy/config:/config
+      - navidrome-socket:/run/navidrome
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+volumes:
+  navidrome-socket:
 
 secrets:
   ddns-api-key:
     file: ./secrets/ddns/api-key
   beets-secret-config:
     file: ./secrets/beets/secret-config.yaml
+  authentik-secret-key:
+    file: ./secrets/authentik/secret-key
+  authentik-postgres-password:
+    file: ./secrets/authentik/postgres-password
+  authentik-smtp-password:
+    file: ./secrets/authentik/smtp-password

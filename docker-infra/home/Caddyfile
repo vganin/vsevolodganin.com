@@ -2,6 +2,10 @@
 	email vsevolod.ganin@gmail.com
 }
 
+auth.vsevolodganin.com {
+	reverse_proxy authentik-server:9000
+}
+
 beszel.vsevolodganin.com {
 	reverse_proxy beszel:8090
 }
@@ -10,8 +14,20 @@ filebrowser.vsevolodganin.com {
 	reverse_proxy filebrowser:80
 }
 
-music.vsevolodganin.com {	
-	reverse_proxy navidrome:4533
+music.vsevolodganin.com {
+	route {
+		request_header -Remote-User
+
+		reverse_proxy /outpost.goauthentik.io/* authentik-server:9000
+
+		@sso not path /rest/* /share/*
+		forward_auth @sso authentik-server:9000 {
+			uri /outpost.goauthentik.io/auth/caddy
+			copy_headers X-Authentik-Username>Remote-User
+		}
+
+		reverse_proxy unix//run/navidrome/navidrome.sock
+	}
 }
 
 plex.vsevolodganin.com {
