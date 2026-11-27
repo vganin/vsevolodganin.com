@@ -75,6 +75,23 @@ entries:
       provider: !KeyOf beets-provider
       meta_launch_url: https://beets.vsevolodganin.com
 
+  - model: authentik_providers_proxy.proxyprovider
+    id: pyload-provider
+    identifiers:
+      name: pyLoad
+    attrs:
+      mode: forward_single
+      external_host: https://pyload.vsevolodganin.com
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+  - model: authentik_core.application
+    identifiers:
+      slug: pyload
+    attrs:
+      name: pyLoad
+      provider: !KeyOf pyload-provider
+      meta_launch_url: https://pyload.vsevolodganin.com
+
   - model: authentik_outposts.outpost
     identifiers:
       managed: goauthentik.io/outposts/embedded
@@ -85,3 +102,4 @@ entries:
         - !KeyOf navidrome-provider
         - !KeyOf dozzle-provider
         - !KeyOf beets-provider
+        - !KeyOf pyload-provider
