@@ -6,6 +6,8 @@ services:
     volumes:
       - ${APP_DATA_PATH:?error}/beszel/data:/beszel_data
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
+    environment:
+      USER_CREATION: "true"
 
   beszel-agent:
     image: henrygd/beszel-agent:0.21.2-alpine
@@ -242,6 +244,7 @@ services:
       - authentik-secret-key
       - authentik-postgres-password
       - authentik-smtp-password
+      - beszel-oidc-client-secret
     depends_on:
       authentik-postgresql:
         condition: service_healthy
@@ -274,6 +277,7 @@ services:
       - authentik-secret-key
       - authentik-postgres-password
       - authentik-smtp-password
+      - beszel-oidc-client-secret
     depends_on:
       authentik-postgresql:
         condition: service_healthy
@@ -306,3 +310,5 @@ secrets:
     file: ./secrets/authentik/postgres-password
   authentik-smtp-password:
     file: ./secrets/authentik/smtp-password
+  beszel-oidc-client-secret:
+    file: ./secrets/beszel/oidc-client-secret
