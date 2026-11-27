@@ -54,7 +54,15 @@ lidarr.vsevolodganin.com {
 }
 
 slsk.vsevolodganin.com {
-	reverse_proxy slskd:5030
+	route {
+		reverse_proxy /outpost.goauthentik.io/* authentik-server:9000
+
+		forward_auth authentik-server:9000 {
+			uri /outpost.goauthentik.io/auth/caddy
+		}
+
+		reverse_proxy slskd:5030
+	}
 }
 
 pyload.vsevolodganin.com {

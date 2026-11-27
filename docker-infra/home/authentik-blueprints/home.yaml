@@ -109,6 +109,23 @@ entries:
       provider: !KeyOf filebrowser-provider
       meta_launch_url: https://filebrowser.vsevolodganin.com
 
+  - model: authentik_providers_proxy.proxyprovider
+    id: slskd-provider
+    identifiers:
+      name: slskd
+    attrs:
+      mode: forward_single
+      external_host: https://slsk.vsevolodganin.com
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+  - model: authentik_core.application
+    identifiers:
+      slug: slskd
+    attrs:
+      name: slskd
+      provider: !KeyOf slskd-provider
+      meta_launch_url: https://slsk.vsevolodganin.com
+
   - model: authentik_outposts.outpost
     identifiers:
       managed: goauthentik.io/outposts/embedded
@@ -121,3 +138,4 @@ entries:
         - !KeyOf beets-provider
         - !KeyOf pyload-provider
         - !KeyOf filebrowser-provider
+        - !KeyOf slskd-provider

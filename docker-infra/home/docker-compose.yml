@@ -135,6 +135,9 @@ services:
   slskd:
     image: slskd/slskd:0.26.2
     restart: unless-stopped
+    # Web auth is handled by Authentik (forward_auth in Caddy). --no-auth is passed
+    # on the command line because CLI args override slskd.yml (env vars do not).
+    command: ["./slskd", "--no-auth"]
     ports:
       - "50300:50300"
     environment:
