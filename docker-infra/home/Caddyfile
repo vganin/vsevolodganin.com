@@ -70,5 +70,18 @@ obsidian.vsevolodganin.com {
 }
 
 docker.vsevolodganin.com {
-	reverse_proxy dozzle:8080
+	route {
+		request_header -Remote-User
+		request_header -Remote-Email
+		request_header -Remote-Name
+
+		reverse_proxy /outpost.goauthentik.io/* authentik-server:9000
+
+		forward_auth authentik-server:9000 {
+			uri /outpost.goauthentik.io/auth/caddy
+			copy_headers X-Authentik-Username>Remote-User X-Authentik-Email>Remote-Email X-Authentik-Name>Remote-Name
+		}
+
+		reverse_proxy dozzle:8080
+	}
 }

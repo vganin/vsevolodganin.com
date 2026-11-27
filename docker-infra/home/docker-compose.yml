@@ -188,6 +188,7 @@ services:
     restart: unless-stopped
     environment:
       DOZZLE_ENABLE_ACTIONS: true
+      DOZZLE_AUTH_PROVIDER: forward-proxy
     volumes:
       - ${APP_DATA_PATH:?error}/dozzle:/data
       - /var/run/docker.sock:/var/run/docker.sock
