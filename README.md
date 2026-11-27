@@ -1,44 +1,6 @@
-# Prerequisites
+# vsevolodganin.com
 
-## Install dependencies
+Personal infrastructure, made up of two parts:
 
-- Docker Engine + Compose
-
-## Create files
-
-### For home environment
-
-- `docker-infra/home/.env`
-  ```
-  HDD_PATH=<...>
-  APP_DATA_PATH=<...>
-  ND_LASTFM_APIKEY=<...>
-  ND_LASTFM_SECRET=<...>
-  ```
-- `docker-infra/home/secrets/`
-  - `ddns/api-key` 
-    ```
-    <...>
-    ```
-  - `beets/secret-config.yaml`
-    ```
-    fetchart:
-        fanarttv_key: <...>
-        lastfm_key: <...>
-    
-    subsonic:
-        user: <...>
-        pass: <...>
-        auth: <...>
-    ```
-
-
-# Run
-
-```sh
-cd docker-infra/home
-# or
-cd docker-infra/cloud
-
-docker compose up -d
-```
+- **Cloud-hosted** ([`docker-infra/cloud`](docker-infra/cloud)): the public website at [vsevolodganin.com](https://vsevolodganin.com), built from [`website-src`](website-src).
+- **Home server** ([`docker-infra/home`](docker-infra/home)): self-hosted services on a machine at home, exposed as `*.vsevolodganin.com` subdomains.
