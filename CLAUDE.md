@@ -54,3 +54,5 @@ These are gitignored and must exist on the host for `docker compose` to work (al
   - `authentik/bootstrap.env` (optional; initial admin bootstrap)
 
 Secrets are passed as Compose `secrets` and read from `/run/secrets/...` (Authentik uses `file://` env values) — follow that pattern rather than putting secrets in `.env` or tracked files.
+
+Files under `secrets/` must be group-readable by `vsga` (dirs `2770`, files `660`/`770`), not `600`: the CI deploy SSHes in as a different user in the `vsga` group, and files the compose client reads itself (e.g. `env_file: secrets/authentik/bootstrap.env`) otherwise fail with "permission denied".
