@@ -11,7 +11,18 @@ beszel.vsevolodganin.com {
 }
 
 filebrowser.vsevolodganin.com {
-	reverse_proxy filebrowser:80
+	route {
+		request_header -Remote-User
+
+		reverse_proxy /outpost.goauthentik.io/* authentik-server:9000
+
+		forward_auth authentik-server:9000 {
+			uri /outpost.goauthentik.io/auth/caddy
+			copy_headers X-Authentik-Username>Remote-User
+		}
+
+		reverse_proxy filebrowser:80
+	}
 }
 
 music.vsevolodganin.com {
