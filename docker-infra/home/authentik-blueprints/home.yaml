@@ -126,6 +126,23 @@ entries:
       provider: !KeyOf slskd-provider
       meta_launch_url: https://slsk.vsevolodganin.com
 
+  - model: authentik_providers_proxy.proxyprovider
+    id: qbittorrent-provider
+    identifiers:
+      name: qBittorrent
+    attrs:
+      mode: forward_single
+      external_host: https://torrent.vsevolodganin.com
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      invalidation_flow: !Find [authentik_flows.flow, [slug, default-provider-invalidation-flow]]
+  - model: authentik_core.application
+    identifiers:
+      slug: qbittorrent
+    attrs:
+      name: qBittorrent
+      provider: !KeyOf qbittorrent-provider
+      meta_launch_url: https://torrent.vsevolodganin.com
+
   - model: authentik_outposts.outpost
     identifiers:
       managed: goauthentik.io/outposts/embedded
@@ -139,3 +156,4 @@ entries:
         - !KeyOf pyload-provider
         - !KeyOf filebrowser-provider
         - !KeyOf slskd-provider
+        - !KeyOf qbittorrent-provider
