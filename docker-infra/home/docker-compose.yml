@@ -173,7 +173,7 @@ services:
       - ${APP_DATA_PATH:?error}/ollama/models:/root/.ollama
 
   open-webui:
-    image: ghcr.io/open-webui/open-webui:v0.13.3
+    image: ghcr.io/open-webui/open-webui:v0.13.5
     restart: unless-stopped
     # Open WebUI has no *_FILE variant for OAUTH_CLIENT_SECRET: export it from
     # the secret, then exec the image's own CMD (`bash start.sh` in /app/backend).
