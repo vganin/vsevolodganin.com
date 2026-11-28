@@ -17,6 +17,32 @@ entries:
         - username
       recovery_flow: !Find [authentik_flows.flow, [slug, default-recovery-flow]]
 
+  # Logging out of authentik does not end forward_auth sessions: the embedded
+  # outpost ignores the session-end signal, so proxy sessions outlive the login.
+  # Delete the proxy sessions tied to the login being ended (their `sid` claim
+  # is the hashed authentik session key) while the user is still logged in.
+  - model: authentik_policies_expression.expressionpolicy
+    id: logout-proxy-sessions-policy
+    identifiers:
+      name: logout-end-proxy-sessions
+    attrs:
+      expression: |
+        from authentik.providers.oauth2.id_token import hash_session_key
+        from authentik.providers.proxy.models import ProxySession
+
+        session = getattr(request.http_request, "session", None)
+        if session is not None and session.session_key:
+            sid = hash_session_key(session.session_key)
+            deleted, _ = ProxySession.objects.filter(session_data__claims__sid=sid).delete()
+            ak_logger.info("Ended proxy sessions on logout", count=deleted)
+        return True
+  - model: authentik_policies.policybinding
+    identifiers:
+      target: !Find [authentik_flows.flow, [slug, default-invalidation-flow]]
+      order: 0
+    attrs:
+      policy: !KeyOf logout-proxy-sessions-policy
+
   - model: authentik_providers_proxy.proxyprovider
     id: navidrome-provider
     identifiers:
