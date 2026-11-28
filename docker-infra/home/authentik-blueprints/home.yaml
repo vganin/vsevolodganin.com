@@ -162,6 +162,9 @@ entries:
       name: Beszel
     attrs:
       client_type: confidential
+      grant_types:
+        - authorization_code
+        - refresh_token
       client_id: beszel
       client_secret: !File /run/secrets/beszel-oidc-client-secret
       redirect_uris:
@@ -205,6 +208,9 @@ entries:
       name: Open WebUI
     attrs:
       client_type: confidential
+      grant_types:
+        - authorization_code
+        - refresh_token
       client_id: open-webui
       # Compose secret mounted on authentik-server and authentik-worker.
       client_secret: !File /run/secrets/open-webui-oidc-client-secret
