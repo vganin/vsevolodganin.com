@@ -226,7 +226,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   authentik-postgresql:
-    image: postgres:16.16-alpine
+    image: postgres:19.0-alpine
     restart: unless-stopped
     environment:
       POSTGRES_DB: authentik
