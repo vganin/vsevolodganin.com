@@ -8,6 +8,8 @@ services:
       - ${APP_DATA_PATH:?error}/beszel/socket:/beszel_socket
     environment:
       USER_CREATION: "true"
+      # Sign-in is only via Authentik OIDC (configured in PocketBase, see CLAUDE.md).
+      DISABLE_PASSWORD_AUTH: "true"
 
   beszel-agent:
     image: henrygd/beszel-agent:0.21.2-alpine
@@ -184,6 +186,11 @@ services:
       # PersistentConfig: only seeded into the DB on first start. On the existing
       # install, set it once in Admin Panel > Settings > General.
       WEBUI_URL: https://ai.vsevolodganin.com
+      # Sign-in is only via Authentik OIDC. ENABLE_PASSWORD_AUTH is read on every
+      # start and rejects password sign-in server-side; ENABLE_LOGIN_FORM is
+      # PersistentConfig (seeds fresh installs only).
+      ENABLE_PASSWORD_AUTH: "false"
+      ENABLE_LOGIN_FORM: "false"
       # oauth.* settings are read from env on every start
       # (ENABLE_OAUTH_PERSISTENT_CONFIG defaults to false).
       ENABLE_OAUTH_SIGNUP: true
